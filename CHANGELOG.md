@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- Fix NullPointerException with cooldowns when teleportations are enabled
+
 ## 4.4.3
 
 ### Fixed

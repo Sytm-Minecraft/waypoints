@@ -111,7 +111,7 @@ private constructor(
             id.toString(),
             type.name,
         ) {
-          OffsetDateTime.parse(getString("cooldownUntil"))
+          getString("cooldownUntil")?.let { OffsetDateTime.parse(it) }
         }
       }
 
