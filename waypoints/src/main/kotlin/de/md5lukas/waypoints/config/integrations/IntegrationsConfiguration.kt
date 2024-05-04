@@ -5,6 +5,8 @@ import de.md5lukas.konfig.Configurable
 @Configurable
 class IntegrationsConfiguration {
 
+  val geyser = GeyserConfiguration()
+
   val dynmap = DynMapConfiguration()
   val squaremap = SquareMapConfiguration()
   val bluemap = BlueMapConfiguration()

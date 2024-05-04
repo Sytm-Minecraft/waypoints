@@ -21,11 +21,7 @@ import de.md5lukas.waypoints.config.general.TeleportPaymentType
 import de.md5lukas.waypoints.events.ConfigReloadEvent
 import de.md5lukas.waypoints.events.PointerEvents
 import de.md5lukas.waypoints.events.WaypointsListener
-import de.md5lukas.waypoints.integrations.BlueMapIntegration
-import de.md5lukas.waypoints.integrations.DynMapIntegration
-import de.md5lukas.waypoints.integrations.Pl3xMapIntegration
-import de.md5lukas.waypoints.integrations.SquareMapIntegration
-import de.md5lukas.waypoints.integrations.VaultIntegration
+import de.md5lukas.waypoints.integrations.*
 import de.md5lukas.waypoints.lang.Translations
 import de.md5lukas.waypoints.lang.WorldTranslations
 import de.md5lukas.waypoints.lang.YmlTranslationLoader
@@ -85,6 +81,9 @@ class WaypointsPlugin : JavaPlugin() {
         vaultIntegration0
             ?: throw IllegalStateException(
                 "The vault integration is configured to be used, but no vault compatible plugin is installed")
+
+  var geyserIntegration: GeyserIntegration? = null
+    private set
 
   var dynMapIntegrationAvailable = false
     private set
@@ -206,9 +205,19 @@ class WaypointsPlugin : JavaPlugin() {
   }
 
   private fun initIntegrations() {
-    val integration = VaultIntegration(this)
-    if (integration.setupEconomy()) {
-      vaultIntegration0 = integration
+    val vault = VaultIntegration(this)
+    if (vault.setupEconomy()) {
+      vaultIntegration0 = vault
+    }
+
+    if (waypointsConfig.integrations.geyser.enabled) {
+      val geyser = GeyserIntegration(this)
+      if (geyser.setupGeyser()) {
+        geyserIntegration = geyser
+      } else {
+        slF4JLogger.warn(
+            "The geyser integration is enabled in the config but geyser is not installed on this server")
+      }
     }
 
     if (waypointsConfig.general.features.globalWaypoints) {

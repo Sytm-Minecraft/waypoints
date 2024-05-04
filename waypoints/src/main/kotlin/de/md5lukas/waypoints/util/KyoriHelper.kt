@@ -3,6 +3,8 @@ package de.md5lukas.waypoints.util
 import de.md5lukas.commons.paper.placeholder
 import de.md5lukas.commons.paper.placeholderIgnoringArguments
 import de.md5lukas.waypoints.WaypointsPlugin
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
 import org.bukkit.Location
 import org.bukkit.entity.Player
 
@@ -21,3 +23,5 @@ fun Location.getResolvers(plugin: WaypointsPlugin, player: Player, translatedTar
         "block_y" placeholder blockY,
         "block_z" placeholder blockZ,
     )
+
+fun Component.asPlainText(): String = PlainTextComponentSerializer.plainText().serialize(this)

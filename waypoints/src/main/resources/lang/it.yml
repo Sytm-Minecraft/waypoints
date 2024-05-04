@@ -232,6 +232,13 @@ message:
       request: |
         <yellow><from><gray> desidera tracciare la tua posizione. Questa richiesta scadrà tra <yellow><valid_for><gray>.
         <gray>[<green><accept>Accetta la richiesta</accept><gray>]
+#      geyser:
+#        title: "You have received a tracking request"
+#        message: |
+#          <from> wants to track your location.
+#          This request will expire in <valid_for>.
+#        accept: "Accept request"
+#        decline: "Decline request"
 
   sharing:
     alreadyShared: "<red>Hai già condiviso questo waypoint con <yellow><name></yellow>."

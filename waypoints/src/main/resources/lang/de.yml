@@ -231,6 +231,13 @@ message:
       request: |
         <yellow><from><gray> möchte deine Position verfolgen. Diese Anfrage wird in <yellow><valid_for><gray> ablaufen.
         <gray>[<green><accept>Anfrage akzeptieren</accept><gray>]
+      geyser:
+        title: "Du hast eine Verfolgungsanfrage erhalten"
+        message: |
+          <from> möchte deine Position verfolgen.
+          Diese Anfrage wird in <valid_for> ablaufen.
+        accept: "Anfrage akzeptieren"
+        decline: "Anfrage ablehnen"
 
   sharing:
     alreadyShared: "<red>Du hast diesen Wegpunkt bereits mit <yellow><name></yellow> geteilt."

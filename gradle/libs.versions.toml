@@ -1,6 +1,6 @@
 [versions]
-kotlin = "2.0.0"
-coroutines = "1.8.1"
+kotlin = "2.0.21"
+coroutines = "1.9.0"
 jvmToolchain = "21"
 paper = "1.20.6-R0.1-SNAPSHOT"
 
@@ -26,7 +26,7 @@ pathfinder = { group = "de.md5lukas", name = "pathfinder", version = "1.0.0-SNAP
 
 # (external)
 schedulers = { group = "de.md5lukas", name = "schedulers", version = "1.0.1" }
-skedule = { group = "de.md5lukas", name = "skedule", version = "2.0.0" }
+skedule = { group = "de.md5lukas", name = "skedule", version = "2.0.1" }
 anvilGui = { group = "de.md5lukas", name = "anvilgui", version = "2.0.0-SNAPSHOT" }
 bStats = { group = "org.bstats", name = "bstats-bukkit", version = "3.0.2" }
 
@@ -39,6 +39,7 @@ dynmap-api = { group = "us.dynmap", name = "dynmap-api", version.ref = "dynmap" 
 squaremapApi = { group = "xyz.jpenilla", name = "squaremap-api", version = "1.2.3" }
 bluemapApi = { group = "de.bluecolored.bluemap", name = "BlueMapAPI", version = "2.7.1" }
 pl3xmap = { group = "maven.modrinth", name = "pl3xmap", version = "1.20.4-492" }
+geyser = { group = "org.geysermc.geyser", name = "api", version = "2.4.2-SNAPSHOT" }
 
 # Links to the various projects to check versions:
 #

@@ -21,6 +21,7 @@ repositories {
     forRepository { maven("https://api.modrinth.com/maven") }
     filter { includeGroup("maven.modrinth") }
   }
+  maven("https://repo.opencollab.dev/main/") // Geyser
 }
 
 dependencies {
@@ -57,6 +58,7 @@ dependencies {
   implementation(libs.squaremapApi)
   implementation(libs.bluemapApi)
   implementation(libs.pl3xmap)
+  implementation(libs.geyser)
 
   // Testing
   testImplementation(kotlin("test-junit5"))
@@ -133,7 +135,8 @@ tasks {
 
   runServer {
     dependsOn("jar")
-    minecraftVersion(libs.versions.paper.get().substringBefore('-'))
+    // minecraftVersion(libs.versions.paper.get().substringBefore('-'))
+    minecraftVersion("1.21.1")
 
     downloadPlugins {
       url(

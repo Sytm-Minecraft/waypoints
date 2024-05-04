@@ -13,6 +13,7 @@ import de.md5lukas.waypoints.WaypointsPermissions
 import de.md5lukas.waypoints.gui.WaypointsGUI
 import de.md5lukas.waypoints.gui.items.ToggleTrackableItem
 import de.md5lukas.waypoints.pointers.PlayerTrackable
+import java.time.Instant
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
 import net.kyori.adventure.text.minimessage.tag.Tag
@@ -84,6 +85,7 @@ class PlayerTrackingPage(
               wpGUI.viewer.closeInventory()
 
               if (wpGUI.plugin.waypointsConfig.playerTracking.requestEnabled) {
+                val geyser = wpGUI.plugin.geyserIntegration
                 val validFor = wpGUI.plugin.waypointsConfig.playerTracking.requestValidFor
                 val validForResolver =
                     "valid_for" placeholder wpGUI.plugin.durationFormatter.formatDuration(validFor)
@@ -94,17 +96,26 @@ class PlayerTrackingPage(
                     validForResolver,
                 )
 
-                value.sendMessage(
-                    wpGUI.translations.MESSAGE_TRACKING_REQUEST_REQUEST.withReplacements(
-                        "from" placeholder wpGUI.viewer.displayName(),
-                        validForResolver,
-                        TagResolver.resolver(
-                            "accept",
-                            Tag.styling(
-                                ClickEvent.callback({ activatePlayerTracking() }) { options ->
-                                  options.lifetime(validFor)
-                                })),
-                    ))
+                if (geyser?.isBedrockPlayer(value) == true) {
+                  val validUntil = Instant.now().plus(validFor)
+                  geyser.sendTrackingRequest(value, wpGUI.viewer, validForResolver) {
+                    if (Instant.now().isBefore(validUntil)) {
+                      activatePlayerTracking()
+                    }
+                  }
+                } else {
+                  value.sendMessage(
+                      wpGUI.translations.MESSAGE_TRACKING_REQUEST_REQUEST.withReplacements(
+                          "from" placeholder wpGUI.viewer.displayName(),
+                          validForResolver,
+                          TagResolver.resolver(
+                              "accept",
+                              Tag.styling(
+                                  ClickEvent.callback({ activatePlayerTracking() }) { options ->
+                                    options.lifetime(validFor)
+                                  })),
+                      ))
+                }
               } else {
                 activatePlayerTracking()
               }

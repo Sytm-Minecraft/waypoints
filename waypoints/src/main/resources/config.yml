@@ -234,6 +234,13 @@ general:
         distance: 1000.0
 
 integrations:
+  geyser:
+    enabled: false
+
+    icon:
+      accept: "textures/ui/confirm"
+      decline: "textures/ui/redX1"
+
   dynmap:
     enabled: true
     # See https://github.com/webbukkit/dynmap/wiki/Using-Markers#marker-icons for more information

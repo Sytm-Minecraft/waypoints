@@ -232,6 +232,13 @@ message:
       request: |
         <yellow><from><gray> 想要获取你的位置. 该请求将会在 <yellow><valid_for><gray> 后过期.
         <gray>[<green><accept>接受请求</accept><gray>]
+#      geyser:
+#        title: "You have received a tracking request"
+#        message: |
+#          <from> wants to track your location.
+#          This request will expire in <valid_for>.
+#        accept: "Accept request"
+#        decline: "Decline request"
 
   sharing:
     alreadyShared: "<red>你已经正在与玩家 <yellow><name></yellow> 分享路径点."

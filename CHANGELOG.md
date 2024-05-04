@@ -6,6 +6,7 @@
 - Option to disallow teleports to different worlds
 - Variable containing the distance between a player and waypoint for the cost formula (`distance`)
 - Option to hide waypoints that are in different worlds as the player
+- Use custom Bedrock window to accept tracking request instead of (broken) clickable link in chat
 
 ### Fixed
 - Warning that a world name has not been translated is printed multiple times

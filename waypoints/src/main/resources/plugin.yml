@@ -16,6 +16,7 @@ softdepend:
   - squaremap
   - BlueMap
   - Pl3xMap
+  - Geyser-Spigot
 
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}

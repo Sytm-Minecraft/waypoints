@@ -162,6 +162,14 @@ class Translations(tl: TranslationLoader) {
       Translation(tl, "message.tracking.trackableRequired", PREFIX)
   val MESSAGE_TRACKING_REQUEST_SENT = Translation(tl, "message.tracking.request.sent", PREFIX)
   val MESSAGE_TRACKING_REQUEST_REQUEST = Translation(tl, "message.tracking.request.request", PREFIX)
+  val MESSAGE_TRACKING_REQUEST_GEYSER_TITLE =
+      Translation(tl, "message.tracking.request.geyser.title")
+  val MESSAGE_TRACKING_REQUEST_GEYSER_MESSAGE =
+      Translation(tl, "message.tracking.request.geyser.message")
+  val MESSAGE_TRACKING_REQUEST_GEYSER_ACCEPT =
+      Translation(tl, "message.tracking.request.geyser.accept")
+  val MESSAGE_TRACKING_REQUEST_GEYSER_DECLINE =
+      Translation(tl, "message.tracking.request.geyser.decline")
   val MESSAGE_TRACKING_NOTIFICATION = Translation(tl, "message.tracking.notification", PREFIX)
 
   val MESSAGE_SHARING_ALREADY_SHARED = Translation(tl, "message.sharing.alreadyShared", PREFIX)
