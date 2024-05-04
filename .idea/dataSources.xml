@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="waypoints-programming" uuid="7e316879-5f9c-46c1-81e8-d8020e7fca5b">
+    <data-source source="LOCAL" name="waypoints.db" uuid="184ec5e6-81e0-4b98-9463-684f3014b311">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:waypoints.db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-      <driver-properties>
-        <property name="foreign_keys" value="true" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="waypoints-live" uuid="f1cdb784-ccef-47f9-87a2-7107fbcbfe3a">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/waypoints/run/plugins/Waypoints/waypoints.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/waypoints.db</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+      </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
       <driver-properties>
         <property name="foreign_keys" value="true" />
