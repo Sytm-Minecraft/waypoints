@@ -164,6 +164,7 @@ message:
           <green>102 35 -238
     limitReached:
       private: "<red>Du hast die maximale Anzahl an Wegpunkten erreicht die du erstellen kannst."
+      public: "<red>Du hast die maximale Anzahl an öffentlichen Wegpunkten erreicht die du erstellen kannst."
     nameDuplicate:
       private: "<red>Wegpunkte mit bereits vorhandenen Namen sind nicht erlaubt."
       public: "<red>Öffentliche Wegpunkte mit bereits vorhandenen Namen sind nicht erlaubt."
@@ -179,6 +180,7 @@ message:
   folder:
     limitReached:
       private: "<red>Du hast die maximale Anzahl an Ordnern erreicht die du erstellen kannst."
+      public: "<red>Du hast die maximale Anzahl an öffentlichen Ordnern erreicht die du erstellen kannst."
     nameDuplicate:
       private: "<red>Ordner mit bereits vorhandenen Namen sind nicht erlaubt."
       public: "<red>Öffentliche Ordner mit bereits vorhandenen Namen sind nicht erlaubt."

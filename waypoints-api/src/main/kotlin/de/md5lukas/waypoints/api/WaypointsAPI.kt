@@ -45,10 +45,10 @@ interface WaypointsAPI {
   fun getWaypointPlayerCF(uuid: UUID) = future { getWaypointPlayer(uuid) }
 
   /** The abstract holder containing public waypoints and folders. */
-  val publicWaypoints: WaypointHolder
+  val publicWaypoints: PublicWaypointHolder
 
   /** The abstract holder containing permission waypoints and folders. */
-  val permissionWaypoints: WaypointHolder
+  val permissionWaypoints: PublicWaypointHolder
 
   /**
    * Retrieve a waypoint of any type with the given UUID from the database.

@@ -144,7 +144,10 @@ class WaypointsCommand(private val plugin: WaypointsPlugin) {
       }
       if (plugin.waypointsConfig.general.features.globalWaypoints) {
         literalArgument("setPublic") {
-          withPermission(WaypointsPermissions.MODIFY_PUBLIC)
+          withRequirement {
+            plugin.waypointsConfig.general.features.publicOwnershipWaypoints ||
+                it.hasPermission(WaypointsPermissions.MODIFY_PUBLIC)
+          }
           greedyStringArgument("name") {
             playerExecutor { player, args ->
               val name = args["name"] as String

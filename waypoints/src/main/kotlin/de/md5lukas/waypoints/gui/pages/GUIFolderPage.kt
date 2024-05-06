@@ -146,6 +146,14 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
         Type.PERMISSION -> wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_PERMISSION)
       }
 
+  private val pow =
+      wpGUI.plugin.waypointsConfig.general.features.publicOwnershipWaypoints &&
+          guiFolder.type == Type.PUBLIC
+
+  private val pof =
+      wpGUI.plugin.waypointsConfig.general.features.publicOwnershipFolders &&
+          guiFolder.type == Type.PUBLIC
+
   override fun update() {
     wpGUI.skedule {
       updateListingContent()
@@ -165,13 +173,13 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
               previousPage()
             },
         'f' to
-            if (guiFolder.type === Type.DEATH || canModify) {
+            if (canModify || pof) {
               if (isOverview) {
                 GUIItem(wpGUI.translations.OVERVIEW_CREATE_FOLDER.item) {
                   wpGUI.playSound { clickNormal }
                   wpGUI.openCreateFolder(guiFolder as WaypointHolder)
                 }
-              } else {
+              } else if (canModify || wpGUI.viewer.uniqueId == (guiFolder as Folder).owner) {
                 GUIItem(wpGUI.translations.FOLDER_DELETE.item) {
                   val nameResolver =
                       "name" placeholder
@@ -203,6 +211,8 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
                       })
                   wpGUI.playSound { clickDanger }
                 }
+              } else {
+                background
               }
             } else {
               background
@@ -234,10 +244,10 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
                 wpGUI.plugin.pointerManager.disable(wpGUI.viewer) { true }
                 wpGUI.skedule { updateControls(true) }
               }
-            } else if (canModify &&
+            } else if (guiFolder is Folder &&
+                (canModify || (pof && (wpGUI.viewer.uniqueId == guiFolder.owner))) &&
                 minecraftVersionAtLeast(wpGUI.plugin, 20, 1) &&
-                wpGUI.plugin.server.pluginManager.isPluginEnabled("ProtocolLib") &&
-                guiFolder is Folder) {
+                wpGUI.plugin.server.pluginManager.isPluginEnabled("ProtocolLib")) {
               GUIItem(wpGUI.translations.FOLDER_EDIT_DESCRIPTION.item) {
                 wpGUI.viewer.closeInventory()
                 val builder =
@@ -266,10 +276,11 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
             if (isOverview) {
               background
             } else {
+              guiFolder as Folder
               wpGUI.extendApi {
                 GUIItem(
-                    (guiFolder as Folder).getItem(wpGUI.viewer),
-                    if (canModify) {
+                    guiFolder.getItem(wpGUI.viewer),
+                    if (canModify || pof && wpGUI.viewer.uniqueId == guiFolder.owner) {
                       {
                         val newIcon =
                             if (it.isShiftClick) {
@@ -302,7 +313,8 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
                     wpGUI.playSound { clickNormal }
                     wpGUI.open(SettingsPage(wpGUI).apply { init() })
                   }
-              guiFolder is Folder && canModify ->
+              guiFolder is Folder &&
+                  (canModify || pof && wpGUI.viewer.uniqueId == guiFolder.owner) ->
                   GUIItem(wpGUI.translations.FOLDER_RENAME.item) {
                     wpGUI.viewer.closeInventory()
                     AnvilGUI.builder()
@@ -342,7 +354,7 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
               else -> background
             },
         'w' to
-            if (canModify &&
+            if ((canModify || pow) &&
                 (checkWorldAvailability(wpGUI.plugin, wpGUI.viewer.world) ||
                     wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_ANYWHERE))) {
               GUIItem(wpGUI.translations.OVERVIEW_SET_WAYPOINT.item) {

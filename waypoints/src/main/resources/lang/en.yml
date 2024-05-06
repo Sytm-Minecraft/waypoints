@@ -164,6 +164,7 @@ message:
           <green>102 35 -238
     limitReached:
       private: "<red>You have reached your personal limit of waypoints you can create."
+      public: "<red>You have reached your personal limit of public waypoints you can create."
     nameDuplicate:
       private: "<red>Waypoints with duplicate names are not permitted."
       public: "<red>Public waypoints with duplicate names are not permitted."
@@ -179,6 +180,7 @@ message:
   folder:
     limitReached:
       private: "<red>You have reached your personal limit of folders you can create."
+      public: "<red>You have reached your personal limit of public folders you can create."
     nameDuplicate:
       private: "<red>Folders with duplicate names are not permitted."
       public: "<red>Public folders with duplicate names are not permitted."

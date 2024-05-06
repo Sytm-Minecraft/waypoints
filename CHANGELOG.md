@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- Allow players to create public waypoints that only the creator can manage. Feature must be manually enabled
+
 ### Fixed
 - Fix NullPointerException with cooldowns when teleportations are enabled
 

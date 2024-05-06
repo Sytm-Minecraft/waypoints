@@ -165,6 +165,7 @@ message:
           <green>102 35 -238
     limitReached:
       private: "<red>你不能再创建更多的路径点了."
+#      public: "<red>You have reached your personal limit of public waypoints you can create."
     nameDuplicate:
       private: "<red>私有路径点不允许重名."
       public: "<red>公开路径点不允许重名."
@@ -180,6 +181,7 @@ message:
   folder:
     limitReached:
       private: "<red>你不能再创建更多的路径点组了."
+#      public: "<red>You have reached your personal limit of public folders you can create."
     nameDuplicate:
       private: "<red>私有路径点组不允许重名."
       public: "<red>公开路径点组不允许重名."

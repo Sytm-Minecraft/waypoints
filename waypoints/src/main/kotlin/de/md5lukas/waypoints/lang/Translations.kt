@@ -108,6 +108,8 @@ class Translations(tl: TranslationLoader) {
       Translation(tl, "message.waypoint.nameDuplicate.private", PREFIX)
   val WAYPOINT_SET_SUCCESS_PRIVATE = Translation(tl, "message.waypoint.setSuccess.private", PREFIX)
 
+  val WAYPOINT_LIMIT_REACHED_PUBLIC =
+      Translation(tl, "message.waypoint.limitReached.public", PREFIX)
   val WAYPOINT_NAME_DUPLICATE_PUBLIC =
       Translation(tl, "message.waypoint.nameDuplicate.public", PREFIX)
   val WAYPOINT_SET_SUCCESS_PUBLIC = Translation(tl, "message.waypoint.setSuccess.public", PREFIX)
@@ -127,6 +129,7 @@ class Translations(tl: TranslationLoader) {
       Translation(tl, "message.folder.createSuccess.private", PREFIX)
   val FOLDER_NEW_ICON_INVALID = Translation(tl, "message.folder.newIconInvalid", PREFIX)
 
+  val FOLDER_LIMIT_REACHED_PUBLIC = Translation(tl, "message.folder.limitReached.public", PREFIX)
   val FOLDER_NAME_DUPLICATE_PUBLIC = Translation(tl, "message.folder.nameDuplicate.public", PREFIX)
   val FOLDER_CREATE_SUCCESS_PUBLIC = Translation(tl, "message.folder.createSuccess.public", PREFIX)
 

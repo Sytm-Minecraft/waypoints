@@ -10,7 +10,9 @@ object WaypointsPermissions {
 
   const val UNLIMITED = "waypoints.unlimited"
   const val LIMIT_PREFIX_WAYPOINTS = "waypoints.limit.waypoints."
+  const val LIMIT_PREFIX_PUBLIC_WAYPOINTS = "waypoints.limit.waypoints.public."
   const val LIMIT_PREFIX_FOLDERS = "waypoints.limit.folders."
+  const val LIMIT_PREFIX_PUBLIC_FOLDERS = "waypoints.limit.folders.public."
   const val TEMPORARY_WAYPOINT = "waypoints.temporaryWaypoint"
   const val TEMPORARY_WAYPOINT_OTHERS = "waypoints.temporaryWaypoint.others"
 

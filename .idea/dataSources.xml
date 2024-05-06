@@ -14,5 +14,18 @@
         <property name="foreign_keys" value="true" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="live" uuid="cf469a75-2e52-466b-814e-df02528c61fe">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/waypoints/run/plugins/Waypoints/waypoints.db</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="foreign_keys" value="true" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

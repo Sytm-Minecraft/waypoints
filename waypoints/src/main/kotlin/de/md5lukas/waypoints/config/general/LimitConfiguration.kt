@@ -14,6 +14,16 @@ class LimitConfiguration {
       field = value.sortedDescending()
     }
 
+  @ConfigPath("public.limit")
+  var publicLimit: Int = 0
+    private set
+
+  @ConfigPath("public.permissionLimits")
+  var publicPermissionLimits: List<Int> = emptyList()
+    private set(value) {
+      field = value.sortedDescending()
+    }
+
   @ConfigPath("allowDuplicateNames.private")
   var allowDuplicateNamesPrivate = false
     private set

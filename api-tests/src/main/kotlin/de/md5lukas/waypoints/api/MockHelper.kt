@@ -24,3 +24,9 @@ suspend fun WaypointsAPI.holderOfType(type: Type) =
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
 annotation class TypesNoDeath
+
+@ParameterizedTest
+@EnumSource(value = Type::class, mode = EnumSource.Mode.INCLUDE, names = ["PUBLIC", "PERMISSION"])
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class GlobalTypes

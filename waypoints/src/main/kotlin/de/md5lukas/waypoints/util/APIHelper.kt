@@ -91,7 +91,8 @@ suspend fun createWaypointPrivate(
       player,
       waypointsPlayer.getWaypointsAmount(),
       WaypointsPermissions.LIMIT_PREFIX_WAYPOINTS,
-      plugin.waypointsConfig.general.waypoints)) {
+      plugin.waypointsConfig.general.waypoints,
+      false)) {
     plugin.translations.WAYPOINT_LIMIT_REACHED_PRIVATE.send(player)
     return LimitReached
   }
@@ -120,12 +121,22 @@ suspend fun createWaypointPublic(
     return it
   }
 
+  if (limitReached(
+      player,
+      plugin.api.publicWaypoints.getWaypointsAmount(player.uniqueId),
+      WaypointsPermissions.LIMIT_PREFIX_PUBLIC_WAYPOINTS,
+      plugin.waypointsConfig.general.waypoints,
+      true)) {
+    plugin.translations.WAYPOINT_LIMIT_REACHED_PUBLIC.send(player)
+    return LimitReached
+  }
+
   if (!checkWaypointName(plugin, plugin.api.publicWaypoints, name)) {
     plugin.translations.WAYPOINT_NAME_DUPLICATE_PUBLIC.send(player)
     return NameTaken
   }
 
-  val waypoint = plugin.api.publicWaypoints.createWaypoint(name, location)
+  val waypoint = plugin.api.publicWaypoints.createWaypoint(name, location, player.uniqueId)
   plugin.translations.WAYPOINT_SET_SUCCESS_PUBLIC.send(player)
 
   checkVisited(plugin, waypoint, player)
@@ -201,7 +212,8 @@ suspend fun createFolderPrivate(
       player,
       waypointsPlayer.getFoldersAmount(),
       WaypointsPermissions.LIMIT_PREFIX_FOLDERS,
-      plugin.waypointsConfig.general.folders)) {
+      plugin.waypointsConfig.general.folders,
+      false)) {
     plugin.translations.FOLDER_LIMIT_REACHED_PRIVATE.send(player)
     return LimitReached
   }
@@ -226,7 +238,17 @@ suspend fun createFolderPublic(
     return NameTaken
   }
 
-  val folder = plugin.api.publicWaypoints.createFolder(name)
+  if (limitReached(
+      player,
+      plugin.api.publicWaypoints.getFoldersAmount(player.uniqueId),
+      WaypointsPermissions.LIMIT_PREFIX_PUBLIC_FOLDERS,
+      plugin.waypointsConfig.general.folders,
+      true)) {
+    plugin.translations.FOLDER_LIMIT_REACHED_PUBLIC.send(player)
+    return LimitReached
+  }
+
+  val folder = plugin.api.publicWaypoints.createFolder(name, player.uniqueId)
   plugin.translations.FOLDER_CREATE_SUCCESS_PUBLIC.send(player)
 
   return SuccessFolder(folder)
@@ -329,14 +351,18 @@ private fun limitReached(
     permissible: Permissible,
     currentAmount: Int,
     permissionPrefix: String,
-    limits: LimitConfiguration,
+    limitConfiguration: LimitConfiguration,
+    public: Boolean,
 ): Boolean {
-  if (limits.limit == 0 ||
-      currentAmount < limits.limit ||
-      permissible.hasPermission(WaypointsPermissions.UNLIMITED))
-      return false
+  val limit = if (public) limitConfiguration.publicLimit else limitConfiguration.limit
+  val limits =
+      if (public) limitConfiguration.publicPermissionLimits else limitConfiguration.permissionLimits
+  val permission =
+      if (public) WaypointsPermissions.MODIFY_PUBLIC else WaypointsPermissions.UNLIMITED
 
-  limits.permissionLimits.forEach {
+  if (limit == 0 || currentAmount < limit || permissible.hasPermission(permission)) return false
+
+  limits.forEach {
     if (permissible.hasPermission(permissionPrefix + it) && currentAmount < it) {
       return false
     }

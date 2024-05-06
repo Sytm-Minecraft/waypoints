@@ -3,11 +3,11 @@ package de.md5lukas.waypoints.api.sqlite
 import de.md5lukas.jdbc.selectFirst
 import de.md5lukas.jdbc.update
 import de.md5lukas.waypoints.api.Folder
+import de.md5lukas.waypoints.api.PublicWaypointHolder
 import de.md5lukas.waypoints.api.SQLiteManager
 import de.md5lukas.waypoints.api.Statistics
 import de.md5lukas.waypoints.api.Type
 import de.md5lukas.waypoints.api.Waypoint
-import de.md5lukas.waypoints.api.WaypointHolder
 import de.md5lukas.waypoints.api.WaypointsAPI
 import de.md5lukas.waypoints.api.WaypointsPlayer
 import java.util.UUID
@@ -37,8 +37,9 @@ internal class WaypointsAPIImpl(
             } ?: false
       }
 
-  override val publicWaypoints: WaypointHolder = WaypointHolderImpl(dm, Type.PUBLIC, null)
-  override val permissionWaypoints: WaypointHolder = WaypointHolderImpl(dm, Type.PERMISSION, null)
+  override val publicWaypoints: PublicWaypointHolder = PublicWaypointHolderImpl(dm, Type.PUBLIC)
+  override val permissionWaypoints: PublicWaypointHolder =
+      PublicWaypointHolderImpl(dm, Type.PERMISSION)
 
   override suspend fun getWaypointByID(uuid: UUID): Waypoint? =
       withContext(dm.asyncDispatcher) {

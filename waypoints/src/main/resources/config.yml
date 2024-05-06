@@ -24,6 +24,13 @@ general:
     deathWaypoints: true
     # Set to "false" to disable teleportations for everyone entirely
     teleportation: true
+    publicOwnership:
+      # Set to "true" to allow all players to create public waypoints, but only be allowed to edit the ones they created
+      waypoints: false
+      # Set to "true" to allow all players to create public folders, but only be allowed to edit the ones they created
+      # Other players can still add/remove waypoints to the folders
+      # Requires the option for waypoints to be true as well
+      folders: false
 
   # Specify additional aliases for the two commands Waypoints uses in case other plugins overwrite them
   commands:
@@ -80,6 +87,17 @@ general:
     # If the list contains the value "400", the plugin looks for the permission "waypoints.limit.waypoints.400", and if a player has this permission the limit is lifted
     permissionLimits:
       - 400
+
+    # These settings are only applicable if the feature "publicOwnership.waypoints" is enabled
+    public:
+      # Maximum amount of public waypoints a player without the permission waypoints.modify.public can create
+      limit: 20
+      # Limit values to check for in permissions.
+      # If the list contains the value "40", the plugin looks for the permission "waypoints.limit.waypoints.public.40",
+      # and if a player has this permission the limit is lifted
+      permissionLimits:
+        - 40
+
     # Allow or disallow duplicate names for private, public or permission waypoints
     allowDuplicateNames:
       private: true
@@ -93,6 +111,17 @@ general:
     # If the list contains the value "40", the plugin looks for the permission "waypoints.limit.folders.40", and if a player has this permission the limit is lifted
     permissionLimits:
       - 40
+
+    # These settings are only applicable if the feature "publicOwnership.waypoints" is enabled
+    public:
+      # Maximum amount of public waypoints a player without the permission waypoints.modify.public can create
+      limit: 2
+      # Limit values to check for in permissions.
+      # If the list contains the value "4", the plugin looks for the permission "waypoints.limit.folders.public.4",
+      # and if a player has this permission the limit is lifted
+      permissionLimits:
+        - 4
+
     # Allow or disallow duplicate names for private, public or permission folders
     allowDuplicateNames:
       private: true

@@ -152,7 +152,7 @@ private constructor(
   }
 
   override suspend fun addDeathLocation(location: Location) {
-    withContext(dm.asyncDispatcher) { super.createWaypointTyped("", location, Type.DEATH) }
+    withContext(dm.asyncDispatcher) { super.createWaypointTyped("", location, Type.DEATH, id) }
   }
 
   override val deathFolder: Folder = DeathFolderImpl(dm, id)
