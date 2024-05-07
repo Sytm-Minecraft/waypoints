@@ -28,9 +28,8 @@ general:
       # Set to "true" to allow all players to create public waypoints, but only be allowed to edit the ones they created
       waypoints: false
       # Set to "true" to allow all players to create public folders, but only be allowed to edit the ones they created
-      # Other players can still add/remove waypoints to the folders
-      # Requires the option for waypoints to be true as well
-      folders: false
+      # Players can only move waypoints into folders they created
+      folders: true
 
   # Specify additional aliases for the two commands Waypoints uses in case other plugins overwrite them
   commands:

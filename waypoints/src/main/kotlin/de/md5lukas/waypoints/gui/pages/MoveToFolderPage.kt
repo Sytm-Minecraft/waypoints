@@ -3,7 +3,9 @@ package de.md5lukas.waypoints.gui.pages
 import de.md5lukas.commons.collections.PaginationList
 import de.md5lukas.kinvs.GUIPattern
 import de.md5lukas.kinvs.items.GUIItem
+import de.md5lukas.waypoints.WaypointsPermissions
 import de.md5lukas.waypoints.api.Folder
+import de.md5lukas.waypoints.api.Type
 import de.md5lukas.waypoints.api.Waypoint
 import de.md5lukas.waypoints.gui.WaypointsGUI
 
@@ -13,6 +15,14 @@ class MoveToFolderPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
   override suspend fun getContent() =
       PaginationList<Folder>(PAGINATION_LIST_PAGE_SIZE).also {
         it.addAll(wpGUI.getHolderForType(waypoint.type).getFolders())
+
+        val viewerId = wpGUI.viewerData.id
+        if (wpGUI.plugin.waypointsConfig.general.features.publicOwnershipFolders &&
+            waypoint.type == Type.PUBLIC &&
+            viewerId == waypoint.owner &&
+            !wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_PUBLIC)) {
+          it.retainAll { folder -> viewerId == folder.owner }
+        }
       }
 
   override suspend fun toGUIContent(value: Folder) =

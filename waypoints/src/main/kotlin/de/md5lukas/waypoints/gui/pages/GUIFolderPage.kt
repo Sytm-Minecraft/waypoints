@@ -354,7 +354,8 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
               else -> background
             },
         'w' to
-            if ((canModify || pow) &&
+            if ((canModify ||
+                pow && (isOverview || (guiFolder as? Folder)?.owner == wpGUI.viewerData.id)) &&
                 (checkWorldAvailability(wpGUI.plugin, wpGUI.viewer.world) ||
                     wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_ANYWHERE))) {
               GUIItem(wpGUI.translations.OVERVIEW_SET_WAYPOINT.item) {

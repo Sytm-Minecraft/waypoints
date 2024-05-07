@@ -312,7 +312,11 @@ class WaypointPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
               background
             },
         'f' to
-            if (canModifyWaypoint && isNotDeathWaypoint) {
+            if (canModifyWaypoint &&
+                isNotDeathWaypoint &&
+                (waypoint.type != Type.PUBLIC ||
+                    wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_PUBLIC) ||
+                    wpGUI.plugin.waypointsConfig.general.features.publicOwnershipFolders)) {
               GUIItem(wpGUI.translations.WAYPOINT_MOVE_TO_FOLDER.item) {
                 wpGUI.skedule {
                   val page = MoveToFolderPage(wpGUI, waypoint).apply { init() }
