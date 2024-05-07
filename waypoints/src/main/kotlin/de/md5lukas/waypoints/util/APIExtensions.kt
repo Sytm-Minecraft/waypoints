@@ -1,5 +1,6 @@
 package de.md5lukas.waypoints.util
 
+import de.md5lukas.commons.paper.appendLore
 import de.md5lukas.commons.paper.editMeta
 import de.md5lukas.commons.paper.placeholder
 import de.md5lukas.commons.paper.placeholderIgnoringArguments
@@ -11,6 +12,7 @@ import de.md5lukas.waypoints.api.gui.GUIFolder
 import de.md5lukas.waypoints.gui.PlayerTrackingDisplayable
 import de.md5lukas.waypoints.gui.SharedDisplayable
 import de.md5lukas.waypoints.lang.InventoryTranslation
+import kotlinx.coroutines.future.await
 import net.kyori.adventure.text.Component
 import org.bukkit.Location
 import org.bukkit.entity.Player
@@ -33,7 +35,7 @@ class APIExtensions(private val plugin: WaypointsPlugin) {
         else -> throw IllegalStateException("Unknown GUIDisplayable subclass")
       }
 
-  fun Waypoint.getItem(player: Player): ItemStack {
+  suspend fun Waypoint.getItem(player: Player): ItemStack {
     val stack =
         when (type) {
           Type.DEATH -> translations.WAYPOINT_ICON_DEATH
@@ -52,6 +54,15 @@ class APIExtensions(private val plugin: WaypointsPlugin) {
       Type.PUBLIC -> translations.WAYPOINT_ICON_PUBLIC_CUSTOM_DESCRIPTION
       Type.PERMISSION -> translations.WAYPOINT_ICON_PERMISSION_CUSTOM_DESCRIPTION
     }?.let { stack.applyDescription(it, description) }
+
+    val owner = this.owner
+    if (plugin.waypointsConfig.general.features.publicOwnershipWaypoints && owner != null) {
+      val ownerName = plugin.uuidUtils.getNameAsync(owner).await()
+      if (ownerName != null) {
+        stack.appendLore(
+            translations.WAYPOINT_ICON_PUBLIC_OWNER.withReplacements("owner" placeholder ownerName))
+      }
+    }
 
     return stack
   }
@@ -166,6 +177,15 @@ class APIExtensions(private val plugin: WaypointsPlugin) {
       Type.PUBLIC -> translations.FOLDER_ICON_PUBLIC_CUSTOM_DESCRIPTION
       Type.PERMISSION -> translations.FOLDER_ICON_PERMISSION_CUSTOM_DESCRIPTION
     }?.let { stack.applyDescription(it, description) }
+
+    val owner = this.owner
+    if (plugin.waypointsConfig.general.features.publicOwnershipFolders && owner != null) {
+      val ownerName = plugin.uuidUtils.getNameAsync(owner).await()
+      if (ownerName != null) {
+        stack.appendLore(
+            translations.FOLDER_ICON_PUBLIC_OWNER.withReplacements("owner" placeholder ownerName))
+      }
+    }
 
     return stack
   }

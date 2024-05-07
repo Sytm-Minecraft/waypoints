@@ -259,6 +259,7 @@ class Translations(tl: TranslationLoader) {
   val WAYPOINT_ICON_PUBLIC = ItemTranslation(tl, "inventory.waypoint.icon.public")
   val WAYPOINT_ICON_PUBLIC_CUSTOM_DESCRIPTION =
       InventoryTranslation(tl, "inventory.waypoint.icon.public.customDescription")
+  val WAYPOINT_ICON_PUBLIC_OWNER = InventoryTranslation(tl, "inventory.waypoint.icon.public.owner")
   val WAYPOINT_ICON_PERMISSION = ItemTranslation(tl, "inventory.waypoint.icon.permission")
   val WAYPOINT_ICON_PERMISSION_CUSTOM_DESCRIPTION =
       InventoryTranslation(tl, "inventory.waypoint.icon.permission.customDescription")
@@ -306,6 +307,7 @@ class Translations(tl: TranslationLoader) {
   val FOLDER_ICON_PUBLIC = ItemTranslation(tl, "inventory.folder.icon.public")
   val FOLDER_ICON_PUBLIC_CUSTOM_DESCRIPTION =
       InventoryTranslation(tl, "inventory.folder.icon.public.customDescription")
+  val FOLDER_ICON_PUBLIC_OWNER = InventoryTranslation(tl, "inventory.folder.icon.public.owner")
   val FOLDER_ICON_PERMISSION = ItemTranslation(tl, "inventory.folder.icon.permission")
   val FOLDER_ICON_PERMISSION_CUSTOM_DESCRIPTION =
       InventoryTranslation(tl, "inventory.folder.icon.permission.customDescription")

@@ -468,6 +468,7 @@ inventory:
         displayName: "<aqua><name>"
         description: *waypointDescription
         customDescription: *waypointCustomDescription
+        owner: "<gray>Owner: <gold><owner>"
       permission:
         displayName: "<light_purple><name>"
         description: *waypointDescription
@@ -603,6 +604,7 @@ inventory:
         displayName: "<aqua><name>"
         description: "<gray>Waypoints in this folder: <gold><amount>"
         customDescription: *folderCustomDescription
+        owner: "<gray>Owner: <gold><owner>"
       permission:
         displayName: "<light_purple><name>"
         description: "<gray>Waypoints in this folder: <gold><amount>"

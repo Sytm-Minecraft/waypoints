@@ -137,7 +137,10 @@ tasks {
     dependsOn("jar")
     minecraftVersion(libs.versions.paper.get().substringBefore('-'))
 
-    downloadPlugins { modrinth("commandapi", libs.versions.commandApi.get()) }
+    downloadPlugins {
+      modrinth("commandapi", libs.versions.commandApi.get())
+      github("dmulloy2", "ProtocolLib", "5.2.0", "ProtocolLib.jar")
+    }
   }
 
   test { useJUnitPlatform() }
