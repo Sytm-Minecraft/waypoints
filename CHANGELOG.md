@@ -2,8 +2,10 @@
 
 ## [Unreleased]
 
+## 4.5.0
+
 ### Added
-- Allow players to create public waypoints that only the creator can manage. Feature must be manually enabled
+- Allow players to create public waypoints and folders that only the creator can manage. Feature must be manually enabled in config
 
 ### Fixed
 - Fix NullPointerException with cooldowns when teleportations are enabled
