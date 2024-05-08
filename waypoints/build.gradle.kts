@@ -73,8 +73,7 @@ tasks {
     val properties =
         mapOf(
             "version" to project.version,
-            "apiVersion" to
-                libs.versions.paper.get().substringBefore('-').split('.').take(2).joinToString("."),
+            "apiVersion" to libs.versions.paper.get().substringBefore('-'),
             "kotlinVersion" to libs.versions.kotlin.get(),
             "coroutinesVersion" to libs.versions.coroutines.get(),
         )
