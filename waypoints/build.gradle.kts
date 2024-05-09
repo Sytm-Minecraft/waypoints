@@ -136,7 +136,7 @@ tasks {
 
     downloadPlugins {
       modrinth("commandapi", libs.versions.commandApi.get())
-      github("dmulloy2", "ProtocolLib", "5.2.0", "ProtocolLib.jar")
+      // github("dmulloy2", "ProtocolLib", "5.2.0", "ProtocolLib.jar")
     }
   }
 
@@ -158,7 +158,7 @@ modrinth {
   versionType = "release"
   uploadFile.set(tasks.shadowJar)
 
-  gameVersions.addAll("1.20.2", "1.20.4", "1.20.6")
+  gameVersions.addAll(libs.versions.paper.get().substringBefore('-'))
   loaders.addAll("paper", "folia")
 
   syncBodyFrom = provider { rootProject.file("README.md").readText() }

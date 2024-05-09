@@ -1,6 +1,6 @@
 [versions]
-kotlin = "1.9.24"
-coroutines = "1.8.1"
+kotlin = "1.9.21"
+coroutines = "1.8.0"
 jvmToolchain = "21"
 paper = "1.20.6-R0.1-SNAPSHOT"
 commandApi = "9.4.1"
