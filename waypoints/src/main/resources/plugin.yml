@@ -41,6 +41,7 @@ permissions:
       - waypoints.modify.public
       - waypoints.modify.permission
       - waypoints.modify.anywhere
+      - waypoints.modify.other
       - waypoints.teleport.private
       - waypoints.teleport.public
       - waypoints.teleport.permission
@@ -65,6 +66,7 @@ permissions:
   waypoints.modify.public: { }
   waypoints.modify.permission: { }
   waypoints.modify.anywhere: { }
+  waypoints.modify.other: { }
 
   waypoints.teleport.private: { }
   waypoints.teleport.public: { }

@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Changed
+- When using `/waypoints other <...>` to inspect another players waypoints, the waypoints can now be modified and removed when the player has the permission `waypoints.modify.other`
+
 ## 4.5.0
 
 ### Added

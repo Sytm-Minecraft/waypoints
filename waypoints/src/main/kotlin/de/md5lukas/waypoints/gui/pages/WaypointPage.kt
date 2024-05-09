@@ -56,7 +56,10 @@ class WaypointPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
   private val canModifyWaypoint =
       when (waypoint.type) {
         Type.PRIVATE,
-        Type.DEATH -> wpGUI.viewerData.id == waypoint.owner
+        Type.DEATH ->
+            wpGUI.viewerData.id == waypoint.owner ||
+                wpGUI.targetData.id == waypoint.owner &&
+                    wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_OTHER)
         Type.PUBLIC ->
             wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_PUBLIC) ||
                 (wpGUI.plugin.waypointsConfig.general.features.publicOwnershipWaypoints &&

@@ -20,6 +20,7 @@ object WaypointsPermissions {
   const val MODIFY_PUBLIC = "waypoints.modify.public"
   const val MODIFY_PERMISSION = "waypoints.modify.permission"
   const val MODIFY_ANYWHERE = "waypoints.modify.anywhere"
+  const val MODIFY_OTHER = "waypoints.modify.other"
 
   const val TELEPORT_PRIVATE = "waypoints.teleport.private"
   const val TELEPORT_PUBLIC = "waypoints.teleport.public"
