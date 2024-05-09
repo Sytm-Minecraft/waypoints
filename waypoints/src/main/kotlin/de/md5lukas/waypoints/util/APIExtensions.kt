@@ -56,7 +56,9 @@ class APIExtensions(private val plugin: WaypointsPlugin) {
     }?.let { stack.applyDescription(it, description) }
 
     val owner = this.owner
-    if (plugin.waypointsConfig.general.features.publicOwnershipWaypoints && owner != null) {
+    if (type == Type.PUBLIC &&
+        plugin.waypointsConfig.general.features.publicOwnershipWaypoints &&
+        owner != null) {
       val ownerName = plugin.uuidUtils.getNameAsync(owner).await()
       if (ownerName != null) {
         stack.appendLore(
@@ -179,7 +181,9 @@ class APIExtensions(private val plugin: WaypointsPlugin) {
     }?.let { stack.applyDescription(it, description) }
 
     val owner = this.owner
-    if (plugin.waypointsConfig.general.features.publicOwnershipFolders && owner != null) {
+    if (type == Type.PUBLIC &&
+        plugin.waypointsConfig.general.features.publicOwnershipFolders &&
+        owner != null) {
       val ownerName = plugin.uuidUtils.getNameAsync(owner).await()
       if (ownerName != null) {
         stack.appendLore(
