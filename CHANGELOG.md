@@ -9,6 +9,7 @@
 
 ### Fixed
 - When having public ownership enabled, the owner is also displayed at the bottom of the waypoint and folder description for private ones
+- Being unable to set a clear/non colored beacon beam
 
 ## 4.5.0
 
