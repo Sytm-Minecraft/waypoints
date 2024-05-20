@@ -14,7 +14,7 @@ subprojects {
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.md5lukas.de/public/")
     maven("https://repo.dmulloy2.net/repository/public/")
-    maven("https://jitpack.io") // Vault and BlueMap
+    maven("https://jitpack.io") // Vault
   }
 
   tasks.withType<KotlinCompile> {

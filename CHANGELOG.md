@@ -4,6 +4,7 @@
 
 ### Changed
 - When using `/waypoints other <...>` to inspect another players waypoints, the waypoints can now be modified and removed when the player has the permission `waypoints.modify.other`
+- Disable plugin remapping on 1.20.6+ servers because this plugin does not utilize NMS
 
 ### Fixed
 - When having public ownership enabled, the owner is also displayed at the bottom of the waypoint and folder description for private ones

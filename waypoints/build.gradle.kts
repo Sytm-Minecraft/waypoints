@@ -13,9 +13,9 @@ plugins {
 description = "Waypoints plugin"
 
 repositories {
-  maven("https://repo.codemc.io/repository/maven-public/") // AnvilGUI
   maven("https://libraries.minecraft.net") // Brigadier
 
+  maven("https://repo.bluecolored.de/releases") // BlueMap
   maven("https://repo.mikeprimm.com/") // DynMap
   exclusiveContent { // Pl3xMap
     forRepository { maven("https://api.modrinth.com/maven") }
@@ -88,8 +88,7 @@ tasks {
 
   compileKotlin {
     // To make sure we have an explicit dependency on the project itself because otherwise we will
-    // get
-    // a warning that we only depend on an output file and not the project itself
+    // get a warning that we only depend on an output file and not the project itself
     dependsOn(project(":api-sqlite").tasks["shadowJar"])
     dependsOn(project(":pointers").tasks["shadowJar"])
   }
@@ -122,15 +121,14 @@ tasks {
       include(dependency("org.bstats::"))
     }
 
-    relocate("de.md5lukas.paper.loader", "de.md5lukas.waypoints")
     arrayOf("commons", "kinvs", "konfig", "schedulers", "signgui").forEach {
       relocate("de.md5lukas.$it", "de.md5lukas.waypoints.libs.$it")
     }
+    arrayOf("com.okkero.skedule", "net.wesjd.anvilgui", "org.bstats").forEach {
+      relocate(it, "de.md5lukas.waypoints.libs.${it.substringAfterLast('.')}")
+    }
 
-    relocate("com.okkero.skedule", "de.md5lukas.waypoints.libs.skedule")
-    relocate("net.wesjd.anvilgui", "de.md5lukas.waypoints.libs.anvilgui")
-    relocate("org.bstats", "de.md5lukas.waypoints.libs.bstats")
-    relocate("io.papermc.papertrail", "de.md5lukas.waypoints.legacy")
+    manifest { attributes("paperweight-mappings-namespace" to "mojang+yarn") }
   }
 
   runServer {
@@ -161,7 +159,7 @@ modrinth {
   versionType = "release"
   uploadFile.set(tasks.shadowJar)
 
-  gameVersions.addAll("1.20.2", libs.versions.paper.get().substringBefore('-'))
+  gameVersions.addAll("1.20.2", "1.20.4", "1.20.6")
   loaders.addAll("paper", "folia")
 
   syncBodyFrom = provider { rootProject.file("README.md").readText() }

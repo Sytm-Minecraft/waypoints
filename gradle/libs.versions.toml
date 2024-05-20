@@ -1,9 +1,9 @@
 [versions]
-kotlin = "1.9.21"
-coroutines = "1.8.0"
+kotlin = "1.9.24"
+coroutines = "1.8.1"
 jvmToolchain = "17"
 paper = "1.20.4-R0.1-SNAPSHOT"
-commandApi = "9.3.0"
+commandApi = "9.4.1"
 
 dynmap = "3.5-SNAPSHOT"
 
@@ -40,8 +40,8 @@ protocollib = { group = "com.comphenix.protocol", name = "ProtocolLib", version 
 dynmap-coreApi = { group = "us.dynmap", name = "DynmapCoreAPI", version.ref = "dynmap" }
 dynmap-api = { group = "us.dynmap", name = "dynmap-api", version.ref = "dynmap" }
 squaremapApi = { group = "xyz.jpenilla", name = "squaremap-api", version = "1.2.3" }
-bluemapApi = { group = "com.github.BlueMap-Minecraft", name = "BlueMapAPI", version = "2.6.2" }
-pl3xmap = { group = "maven.modrinth", name = "pl3xmap", version = "1.20.4-489" }
+bluemapApi = { group = "de.bluecolored.bluemap", name = "BlueMapAPI", version = "2.7.1" }
+pl3xmap = { group = "maven.modrinth", name = "pl3xmap", version = "1.20.4-492" }
 
 # Links to the various projects to check versions:
 #
