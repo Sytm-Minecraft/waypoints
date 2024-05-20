@@ -14,6 +14,7 @@ import de.md5lukas.waypoints.gui.WaypointsGUI
 import de.md5lukas.waypoints.integrations.DynMapIntegration
 import de.md5lukas.waypoints.integrations.Pl3xMapIntegration
 import de.md5lukas.waypoints.integrations.SquareMapIntegration
+import de.md5lukas.waypoints.pointers.BeaconColor
 import de.md5lukas.waypoints.pointers.WaypointTrackable
 import de.md5lukas.waypoints.util.*
 import net.kyori.adventure.text.Component
@@ -71,6 +72,10 @@ class WaypointPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
                     wpGUI.viewerData.id == waypoint.owner)
         Type.PERMISSION -> wpGUI.viewer.hasPermission(WaypointsPermissions.MODIFY_PERMISSION)
       }
+
+  override fun update() {
+    wpGUI.skedule { updatePage() }
+  }
 
   private suspend fun updatePage(update: Boolean = true) {
     applyPattern(
@@ -312,10 +317,15 @@ class WaypointPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
             if (canModifyWaypoint &&
                 isNotDeathWaypoint &&
                 wpGUI.plugin.waypointsConfig.pointers.beacon.enabled) {
-              GUIItem(wpGUI.translations.WAYPOINT_SELECT_BEACON_COLOR.item) {
-                wpGUI.open(SelectBeaconColorPage(wpGUI, waypoint))
-                wpGUI.playSound { clickNormal }
-              }
+              GUIItem(
+                  wpGUI.translations.WAYPOINT_SELECT_BEACON_COLOR.getItem(
+                      waypoint.beaconColor
+                          ?: (wpGUI.plugin.waypointsConfig.pointers.beacon.getDefaultColor(
+                                  waypoint.type) ?: BeaconColor.CLEAR)
+                              .material)) {
+                    wpGUI.open(SelectBeaconColorPage(wpGUI, waypoint))
+                    wpGUI.playSound { clickNormal }
+                  }
             } else {
               background
             },

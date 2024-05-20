@@ -71,11 +71,9 @@ internal class BeaconPointer(
     if (create) {
       player.sendBlockChange(
           loc,
-          (if (trackable is StaticTrackable) {
-                trackable.beaconColor
-              } else {
-                null
-              } ?: config.getDefaultColor(trackable) ?: BeaconColor.CLEAR)
+          ((trackable as? StaticTrackable)?.beaconColor
+                  ?: config.getDefaultColor(trackable)
+                  ?: BeaconColor.CLEAR)
               .blockData)
     } else {
       player.sendActualBlock(loc)

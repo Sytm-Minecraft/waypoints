@@ -515,7 +515,7 @@ inventory:
     editDescription: PAPER
     moveToFolder: CHEST_MINECART
     teleport: ENDER_PEARL
-    selectBeaconColor: LIME_STAINED_GLASS
+    selectBeaconColor: GLASS
     getUuid: COMMAND_BLOCK
     share: SPYGLASS
     editPermission: IRON_BARS

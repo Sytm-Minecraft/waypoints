@@ -46,6 +46,8 @@ class BeaconConfigurationImpl : RepeatingPointerConfigurationImpl(), BeaconConfi
         else -> null
       }
 
+  fun getDefaultColor(type: Type) = defaultColor[type]
+
   @UseAdapter(BeaconColorDefaults::class)
   private var defaultColor: Map<Type, BeaconColor> = emptyMap()
 
