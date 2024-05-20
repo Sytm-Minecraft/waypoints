@@ -23,6 +23,9 @@ class SharedWaypointsPage(
     ListingPage<Pair<WaypointShare, Waypoint>>(
         wpGUI, wpGUI.extendApi { Type.PRIVATE.getBackgroundItem() }) {
 
+  override val title: Component
+    get() = wpGUI.translations.INVENTORY_TITLE_SHARED.text
+
   override suspend fun getContent() =
       PaginationList<Pair<WaypointShare, Waypoint>>(PAGINATION_LIST_PAGE_SIZE).also { list ->
         list.addAll(wpGUI.targetData.getSharedWaypoints().map { it to it.getWaypoint() })

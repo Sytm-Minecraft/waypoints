@@ -13,6 +13,7 @@ import de.md5lukas.waypoints.WaypointsPermissions
 import de.md5lukas.waypoints.gui.WaypointsGUI
 import de.md5lukas.waypoints.gui.items.ToggleTrackableItem
 import de.md5lukas.waypoints.pointers.PlayerTrackable
+import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
 import net.kyori.adventure.text.minimessage.tag.Tag
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
@@ -22,6 +23,9 @@ import org.bukkit.inventory.meta.SkullMeta
 class PlayerTrackingPage(
     wpGUI: WaypointsGUI,
 ) : ListingPage<Player>(wpGUI, wpGUI.translations.TRACKING_BACKGROUND.item) {
+
+  override val title: Component
+    get() = wpGUI.translations.INVENTORY_TITLE_PLAYER_TRACKING.text
 
   override suspend fun getContent(): PaginationList<Player> =
       PaginationList<Player>(PAGINATION_LIST_PAGE_SIZE).also { list ->

@@ -19,7 +19,7 @@ spigot = { group = "org.spigotmc", name = "spigot-api", version.ref = "paper" }
 # Required dependencies
 # (own)
 md5Commons = { group = "de.md5lukas", name = "md5-commons", version = "3.0.0-SNAPSHOT" }
-kinvs = { group = "de.md5lukas", name = "kinvs", version = "1.0.5" }
+kinvs = { group = "de.md5lukas", name = "kinvs", version = "1.1.0" }
 sqliteHelper = { group = "de.md5lukas", name = "sqlite-kotlin-helper", version = "1.2.2" }
 konfig = { group = "de.md5lukas", name = "spigot-konfig", version = "1.0.1" }
 pathfinder = { group = "de.md5lukas", name = "pathfinder", version = "1.0.0-SNAPSHOT" }

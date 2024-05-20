@@ -9,6 +9,7 @@ import de.md5lukas.kinvs.GUIPattern
 import de.md5lukas.kinvs.items.GUIItem
 import de.md5lukas.waypoints.api.Waypoint
 import de.md5lukas.waypoints.gui.WaypointsGUI
+import net.kyori.adventure.text.Component
 import org.bukkit.entity.Player
 import org.bukkit.inventory.meta.SkullMeta
 
@@ -16,6 +17,10 @@ class ShareWaypointPage(
     wpGUI: WaypointsGUI,
     private val waypoint: Waypoint,
 ) : ListingPage<Player>(wpGUI, wpGUI.extendApi { waypoint.type.getBackgroundItem() }) {
+
+  override val title: Component =
+      wpGUI.translations.INVENTORY_TITLE_SHARE.withReplacements(
+          "waypoint" placeholder waypoint.name)
 
   override suspend fun getContent() =
       PaginationList<Player>(PAGINATION_LIST_PAGE_SIZE).also { list ->

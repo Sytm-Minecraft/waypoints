@@ -3,12 +3,14 @@ package de.md5lukas.waypoints.gui.pages
 import com.okkero.skedule.SynchronizationContext
 import com.okkero.skedule.switchContext
 import de.md5lukas.commons.collections.LoopAroundList
+import de.md5lukas.commons.paper.placeholder
 import de.md5lukas.kinvs.GUIPattern
 import de.md5lukas.kinvs.items.GUIContent
 import de.md5lukas.kinvs.items.GUIItem
 import de.md5lukas.waypoints.api.Waypoint
 import de.md5lukas.waypoints.gui.WaypointsGUI
 import de.md5lukas.waypoints.pointers.BeaconColor
+import net.kyori.adventure.text.Component
 import org.bukkit.inventory.ItemStack
 
 class SelectBeaconColorPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
@@ -25,6 +27,10 @@ class SelectBeaconColorPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint)
             "________b",
         )
   }
+
+  override val title: Component =
+      wpGUI.translations.INVENTORY_TITLE_SELECT_BEACON_COLOR.withReplacements(
+          "waypoint" placeholder waypoint.name)
 
   private val colors =
       LoopAroundList<GUIContent>(5).also { list ->

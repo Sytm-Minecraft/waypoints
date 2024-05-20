@@ -169,6 +169,19 @@ class Translations(tl: TranslationLoader) {
 
   val INVENTORY_TITLE_SELF = Translation(tl, "inventory.title.self")
   val INVENTORY_TITLE_OTHER = Translation(tl, "inventory.title.other")
+  val INVENTORY_TITLE_PUBLIC = Translation(tl, "inventory.title.public")
+  val INVENTORY_TITLE_PERMISSION = Translation(tl, "inventory.title.permission")
+  val INVENTORY_TITLE_FOLDER = Translation(tl, "inventory.title.folder")
+
+  val INVENTORY_TITLE_SETTINGS = Translation(tl, "inventory.title.settings")
+  val INVENTORY_TITLE_WAYPOINT = Translation(tl, "inventory.title.waypoint")
+  val INVENTORY_TITLE_PLAYER_TRACKING = Translation(tl, "inventory.title.playerTracking")
+  val INVENTORY_TITLE_SHARE = Translation(tl, "inventory.title.sharing.selectPlayer")
+  val INVENTORY_TITLE_SHARED = Translation(tl, "inventory.title.sharing.sharedWaypoints")
+  val INVENTORY_TITLE_SHARING = Translation(tl, "inventory.title.sharing.sharedWith")
+  val INVENTORY_TITLE_CONFIRM = Translation(tl, "inventory.title.confirm")
+  val INVENTORY_TITLE_SELECT_FOLDER = Translation(tl, "inventory.title.selectFolder")
+  val INVENTORY_TITLE_SELECT_BEACON_COLOR = Translation(tl, "inventory.title.selectBeaconColor")
 
   val GENERAL_PREVIOUS = ItemTranslation(tl, "inventory.general.previous")
   val GENERAL_NEXT = ItemTranslation(tl, "inventory.general.next")

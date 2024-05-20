@@ -8,6 +8,7 @@ import de.md5lukas.waypoints.gui.items.ToggleGlobalsItem
 import de.md5lukas.waypoints.gui.items.TogglePointerItem
 import de.md5lukas.waypoints.gui.items.ToggleTemporaryWaypointsItem
 import de.md5lukas.waypoints.pointers.variants.PointerVariant
+import net.kyori.adventure.text.Component
 
 class SettingsPage(wpGUI: WaypointsGUI) :
     BasePage(wpGUI, wpGUI.extendApi { Type.PRIVATE.getBackgroundItem() }) {
@@ -28,6 +29,9 @@ class SettingsPage(wpGUI: WaypointsGUI) :
             "________b",
         )
   }
+
+  override val title: Component
+    get() = wpGUI.translations.INVENTORY_TITLE_SETTINGS.text
 
   private fun updatePage(update: Boolean = true) {
     val mappings =

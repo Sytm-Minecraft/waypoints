@@ -3,6 +3,7 @@ package de.md5lukas.waypoints.gui.pages
 import de.md5lukas.kinvs.GUIPattern
 import de.md5lukas.kinvs.items.GUIItem
 import de.md5lukas.waypoints.gui.WaypointsGUI
+import net.kyori.adventure.text.Component
 import org.bukkit.inventory.ItemStack
 
 class ConfirmPage(
@@ -24,6 +25,9 @@ class ConfirmPage(
             "_________",
         )
   }
+
+  override val title: Component
+    get() = wpGUI.translations.INVENTORY_TITLE_CONFIRM.text
 
   init {
     applyPattern(

@@ -268,6 +268,23 @@ inventory:
     self: "<dark_gray>Deine Wegpunkte"
     # name: Name of the other player
     other: "<dark_gray>Wegpunkte von <blue><name>"
+    public: "<dark_gray>Öffentliche Wegpunkte"
+    permission: "<dark_gray>Eingeschränkte Wegpunkte"
+    # folder: Name of the folder
+    folder: "<dark_gray>Ordner <gold><folder>"
+    settings: "<dark_gray>Einstellungen"
+    # waypoint: Name of the waypoint
+    waypoint: "<dark_gray>Wegpunkte <gold><waypoint>"
+    playerTracking: "<dark_gray>Spieler-Verfolgung"
+    sharing:
+      # waypoint: Name of the waypoint
+      selectPlayer: "<dark_gray>Spieler zum Teilen von <gold><waypoint></gold> auswählen"
+      sharedWaypoints: "<dark_gray>Wegpunkte die mit dir geteilt wurden"
+      # waypoint: Name of the waypoint
+      sharedWith: "<dark_gray>Spieler denen du <gold><waypoint></gold> geteilt hast"
+    confirm: "<dark_gray>Bist du dir sicher?"
+    selectFolder: "<dark_gray>Ordner für <gold><waypoint></gold> auswählen"
+    selectBeaconColor: "<dark_gray>Leuchtfeuerfarbe für <gold><waypoint></gold> auswählen"
 
   general:
     previous:

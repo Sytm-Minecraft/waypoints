@@ -1,6 +1,9 @@
 package de.md5lukas.waypoints.gui.pages
 
+import com.okkero.skedule.SynchronizationContext
+import com.okkero.skedule.switchContext
 import de.md5lukas.commons.collections.PaginationList
+import de.md5lukas.commons.paper.placeholder
 import de.md5lukas.kinvs.GUIPattern
 import de.md5lukas.kinvs.items.GUIItem
 import de.md5lukas.waypoints.WaypointsPermissions
@@ -8,9 +11,14 @@ import de.md5lukas.waypoints.api.Folder
 import de.md5lukas.waypoints.api.Type
 import de.md5lukas.waypoints.api.Waypoint
 import de.md5lukas.waypoints.gui.WaypointsGUI
+import net.kyori.adventure.text.Component
 
 class MoveToFolderPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
     ListingPage<Folder>(wpGUI, wpGUI.extendApi { waypoint.type.getBackgroundItem() }) {
+
+  override val title: Component =
+      wpGUI.translations.INVENTORY_TITLE_SELECT_FOLDER.withReplacements(
+          "waypoint" placeholder waypoint.name)
 
   override suspend fun getContent() =
       PaginationList<Folder>(PAGINATION_LIST_PAGE_SIZE).also {
@@ -31,6 +39,7 @@ class MoveToFolderPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
           wpGUI.playSound { clickSuccess }
           wpGUI.skedule {
             waypoint.setFolder(value)
+            switchContext(SynchronizationContext.SYNC)
             wpGUI.goBack()
           }
         }
@@ -62,6 +71,7 @@ class MoveToFolderPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
               wpGUI.playSound { clickSuccess }
               wpGUI.skedule {
                 waypoint.setFolder(null)
+                switchContext(SynchronizationContext.SYNC)
                 wpGUI.goBack()
               }
             },

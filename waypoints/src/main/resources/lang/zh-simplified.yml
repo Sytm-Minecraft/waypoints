@@ -265,6 +265,23 @@ inventory:
     self: "<dark_gray>你的路径点"
     # name: Name of the other player
     other: "<dark_gray>玩家 <blue><name> <dark_gray>的路径点"
+#    public: "<dark_gray>Public waypoints"
+#    permission: "<dark_gray>Permission waypoints"
+    # folder: Name of the folder
+#    folder: "<dark_gray>Folder <gold><folder>"
+#    settings: "<dark_gray>Settings"
+    # waypoint: Name of the waypoint
+#    waypoint: "<dark_gray>Waypoint <gold><waypoint>"
+#    playerTracking: "<dark_gray>Player tracking"
+#    sharing:
+      # waypoint: Name of the waypoint
+#      selectPlayer: "<dark_gray>Select player to share <gold><waypoint></gold> with"
+#      sharedWaypoints: "<dark_gray>Waypoints that have been shared with you"
+      # waypoint: Name of the waypoint
+#      sharedWith: "<dark_gray>Players you have shared <gold><waypoint></gold> with"
+#    confirm: "<dark_gray>Are you sure?"
+#    selectFolder: "<dark_gray>Select folder for <gold><waypoint>"
+#    selectBeaconColor: "<dark_gray>Select beacon color for <gold><waypoint>"
 
   general:
     previous:

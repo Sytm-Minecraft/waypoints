@@ -13,6 +13,7 @@ import de.md5lukas.waypoints.api.WaypointShare
 import de.md5lukas.waypoints.gui.WaypointsGUI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.inventory.meta.SkullMeta
 
@@ -20,6 +21,10 @@ class SharingWaypointPage(
     wpGUI: WaypointsGUI,
     private val waypoint: Waypoint,
 ) : ListingPage<WaypointShare>(wpGUI, wpGUI.extendApi { waypoint.type.getBackgroundItem() }) {
+
+  override val title: Component =
+      wpGUI.translations.INVENTORY_TITLE_SHARING.withReplacements(
+          "waypoint" placeholder waypoint.name)
 
   override suspend fun getContent() =
       PaginationList<WaypointShare>(PAGINATION_LIST_PAGE_SIZE).also { list ->

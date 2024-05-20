@@ -21,6 +21,7 @@ import de.md5lukas.waypoints.gui.SharedDisplayable
 import de.md5lukas.waypoints.gui.WaypointsGUI
 import de.md5lukas.waypoints.gui.items.CycleSortItem
 import de.md5lukas.waypoints.util.*
+import net.kyori.adventure.text.Component
 import net.wesjd.anvilgui.AnvilGUI
 import org.bukkit.Location
 
@@ -44,6 +45,21 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
      */
     val controlsPattern = GUIPattern("pfsditwbn")
   }
+
+  override val title: Component? =
+      when (guiFolder) {
+        is WaypointsPlayer -> null // Keep default top-level inventory title
+        is PublicWaypointHolder ->
+            when (guiFolder.type) {
+              Type.PUBLIC -> wpGUI.translations.INVENTORY_TITLE_PUBLIC.text
+              Type.PERMISSION -> wpGUI.translations.INVENTORY_TITLE_PERMISSION.text
+              else -> throw IllegalStateException("Unexpected GUI type ${guiFolder.type}")
+            }
+        is Folder ->
+            wpGUI.translations.INVENTORY_TITLE_FOLDER.withReplacements(
+                "folder" placeholder guiFolder.name)
+        else -> throw IllegalStateException("Unexpected GUIFolder implementation: $guiFolder")
+      }
 
   override suspend fun getContent(): PaginationList<GUIDisplayable> {
     val content = PaginationList<GUIDisplayable>(PAGINATION_LIST_PAGE_SIZE)

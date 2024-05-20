@@ -16,6 +16,7 @@ import de.md5lukas.waypoints.integrations.Pl3xMapIntegration
 import de.md5lukas.waypoints.integrations.SquareMapIntegration
 import de.md5lukas.waypoints.pointers.WaypointTrackable
 import de.md5lukas.waypoints.util.*
+import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
 import net.wesjd.anvilgui.AnvilGUI
 
@@ -50,6 +51,10 @@ class WaypointPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
             "d___t___b",
         )
   }
+
+  override val title: Component =
+      wpGUI.translations.INVENTORY_TITLE_WAYPOINT.withReplacements(
+          "waypoint" placeholder waypoint.name)
 
   private val isNotDeathWaypoint = waypoint.type !== Type.DEATH
 
