@@ -41,13 +41,13 @@ dependencies {
   implementation(libs.md5Commons)
   implementation(libs.kinvs)
   implementation(libs.konfig)
+  implementation(libs.paperBrigadier) { this.isChanging = true }
 
   // Required dependencies
   implementation(libs.schedulers)
   implementation(libs.skedule)
   implementation(libs.anvilGui)
   implementation(libs.bStats)
-  implementation(libs.bundles.commandApi)
 
   // Optional dependencies
   implementation(libs.vaultApi)
@@ -62,6 +62,13 @@ dependencies {
   testImplementation(kotlin("test-junit5"))
   testImplementation(libs.junitJupiter)
   testRuntimeOnly(libs.junitLauncher)
+}
+
+configurations.all {
+  resolutionStrategy {
+    cacheChangingModulesFor(10, TimeUnit.MINUTES)
+    cacheDynamicVersionsFor(10, TimeUnit.MINUTES)
+  }
 }
 
 tasks {
@@ -113,6 +120,7 @@ tasks {
       include(dependency(libs.md5Commons.get()))
       include(dependency(libs.kinvs.get()))
       include(dependency(libs.konfig.get()))
+      include(dependency(libs.paperBrigadier.get()))
 
       include(dependency(libs.schedulers.get()))
       include(dependency(libs.skedule.get()))
@@ -135,7 +143,6 @@ tasks {
     minecraftVersion(libs.versions.paper.get().substringBefore('-'))
 
     downloadPlugins {
-      modrinth("commandapi", libs.versions.commandApi.get())
       // github("dmulloy2", "ProtocolLib", "5.2.0", "ProtocolLib.jar")
     }
   }
@@ -168,7 +175,6 @@ modrinth {
   }
 
   dependencies {
-    with(required) { project("commandapi") }
     with(optional) {
       project("pl3xmap")
       project("bluemap")

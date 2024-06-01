@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Changed
+- **CommandAPI is no longer required**
+
 ## 4.5.1
 
 ### Changed

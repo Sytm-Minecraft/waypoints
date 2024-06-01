@@ -4,6 +4,7 @@ import com.okkero.skedule.skedule
 import de.md5lukas.waypoints.WaypointsPlugin
 import de.md5lukas.waypoints.gui.WaypointsGUI
 import de.md5lukas.waypoints.util.checkWorldAvailability
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
@@ -32,5 +33,10 @@ class WaypointsListener(private val plugin: WaypointsPlugin) : Listener {
       // automatically in next tick due to context switch)
       WaypointsGUI(plugin, e.player, e.player.uniqueId)
     }
+  }
+
+  @EventHandler
+  fun onConfigReload(e: ConfigReloadEvent) {
+    plugin.server.onlinePlayers.forEach(Player::updateCommands)
   }
 }
