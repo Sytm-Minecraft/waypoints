@@ -200,7 +200,7 @@ class PointerManager(
      * @param player The player to load the enabled pointers for
      * @return The enabled pointers
      */
-    fun loadEnabledPointers(player: Player): CompletableFuture<Map<PointerVariant, Boolean>> {
+    fun loadEnabledPointers(player: Player): CompletableFuture<out Map<PointerVariant, Boolean>> {
       return CompletableFuture.completedFuture(emptyMap())
     }
 

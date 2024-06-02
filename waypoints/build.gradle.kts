@@ -128,8 +128,8 @@ tasks {
       include(dependency("org.bstats::"))
     }
 
-    arrayOf("commons", "kinvs", "konfig", "schedulers", "signgui").forEach {
-      relocate("de.md5lukas.$it", "de.md5lukas.waypoints.libs.$it")
+    arrayOf("commons", "kinvs", "konfig", "schedulers", "signgui", "paper.brigadier").forEach {
+      relocate("de.md5lukas.$it", "de.md5lukas.waypoints.libs.${it.substringAfterLast('.')}")
     }
     arrayOf("com.okkero.skedule", "net.wesjd.anvilgui", "org.bstats").forEach {
       relocate(it, "de.md5lukas.waypoints.libs.${it.substringAfterLast('.')}")
