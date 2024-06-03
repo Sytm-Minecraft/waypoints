@@ -198,7 +198,7 @@ message:
     blacklist: "<red>不允許以下物品: <yellow><items>"
 
   temporaryWaypoints:
-    blocked: "<red>玩家 <yellow><name></yellow> 已屏蔽接收臨時座標."
+    blocked: "<red>玩家 <yellow><name></yellow> 已關閉接收臨時座標."
 
   teleport:
     # remaining_cooldown: Time left until player can teleport again
@@ -370,7 +370,7 @@ inventory:
           
           <gray>點擊此處以阻止它們
       blocked:
-        displayName: "<yellow>臨時座標已屏蔽"
+        displayName: "<yellow>臨時座標已關閉"
         description: |
           <gray>其他玩家可用:
           <green>/waypoints setTemporary X Y Z <name>
