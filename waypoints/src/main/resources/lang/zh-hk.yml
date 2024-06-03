@@ -321,9 +321,9 @@ inventory:
       inactiveColor: "<gray>"
 
     settings:
-      displayName: "<yellow>設置"
+      displayName: "<yellow>設定"
       description: |
-        <gray>更改全局座標的可見性和使用的指示器
+        <gray>更改所有座標的可見性和指示器的使用
 
     deselect:
       displayName: "<yellow>取消選擇所有座標"
@@ -355,10 +355,10 @@ inventory:
   settings:
     toggleGlobals:
       visible:
-        displayName: "<yellow>全局座標可見"
+        displayName: "<yellow>所有座標可見"
         description: "<gray>點擊隱藏"
       hidden:
-        displayName: "<yellow>全局座標隱藏"
+        displayName: "<yellow>所有座標隱藏"
         description: "<gray>點擊顯示"
     temporaryWaypoints:
       receivable:
@@ -379,7 +379,7 @@ inventory:
           <gray>點擊此處以再次接收它們
     pointers:
       title:
-        displayName: "<yellow>自定義使用的指示器"
+        displayName: "<yellow>自定義指示器的使用"
         description: ""
       on:
         displayName: "<bold><green><name>"
