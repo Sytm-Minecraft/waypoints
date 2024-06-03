@@ -24,7 +24,7 @@ command:
     help:
       header: "<gray><underlined>幫助界面"
       deselectWaypoint: "<gray> - <yellow>/<label> deselectWaypoint <玩家名稱> <gray><bold>|<reset><gray> 為玩家刪除選擇的座標"
-      selectWaypoint: "<gray> - <yellow>/<label> selectWaypoint <玩家名稱> <Waypoint-UUID> <gray><bold>|<reset><gray> 為玩家設置一個將要去到的座標"
+      selectWaypoint: "<gray> - <yellow>/<label> selectWaypoint <玩家名稱> <Waypoint-UUID> <gray><bold>|<reset><gray> 為玩家設定一個將要去到的座標"
       temporaryWaypoint: "<gray> - <yellow>/<label> temporaryWaypoint <玩家名稱> <X> <Y> <Z> [光柱顏色] <gray><bold>|<reset><gray> 為玩家創建臨時座標"
       uuid: "<gray> - <yellow>/<label> uuid <名稱> <gray><bold>|<reset><gray> 通過關鍵詞搜索座標並返回其 UUID"
 
@@ -274,7 +274,7 @@ inventory:
     permission: "<dark_gray>權限座標"
     # folder: Name of the folder
     folder: "<dark_gray>資料夾 <gold><folder>"
-    settings: "<dark_gray>設置"
+    settings: "<dark_gray>設定"
     # waypoint: Name of the waypoint
     waypoint: "<dark_gray>座標 <gold><waypoint>"
     playerTracking: "<dark_gray>玩家追蹤"
@@ -487,7 +487,7 @@ inventory:
 
     select:
       displayName: "<yellow>選擇座標"
-      description: "<gray>點擊設置該座標為你的目的地"
+      description: "<gray>點擊設定該座標為你的目的地"
     deselect:
       displayName: "<yellow>取消選擇此座標"
       description: ""
