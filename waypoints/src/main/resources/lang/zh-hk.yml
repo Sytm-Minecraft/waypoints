@@ -1,6 +1,6 @@
 # 使用格式: https://docs.advntr.dev/minimessage/format.html
 #Translations made by ItzTheBear (Discord: chunkiu), please contants me if there are typo or incorrect translations :D
-#本翻譯是由 ItzTheBear 創建 (Discord: chunkiu) 請聯絡本人如果有任何翻譯錯誤，或您可以自行在Github上進行Pull request。:D
+#本翻譯是由 ItzTheBear 創建 (Discord: chunkiu) 請聯絡本人如果有任何翻譯錯誤，或您可以自行在Github上進行Pull request。
 
 prefix: "<aqua><bold>座標 <yellow><bold>><reset> "
 scriptPrefix: "<aqua><bold>座標<green>腳本 <yellow><bold>><reset> "
@@ -68,7 +68,7 @@ command:
     # world: World where the waypoint is located at
     # x, y, z: Coordinates of the waypoint
     # block_x, block_y, block_z: Coordinates of the block nearest to the waypoint
-    # distance: Distance in blocks to the player                                                                                     
+    # distance: Distance in blocks to the player 
     tooltip: "<created_at:'dd.MM.uuuu kk:mm'>"
 
   select:
@@ -81,7 +81,7 @@ command:
     playerNoWaypoints: "<red>指定玩家無現有座標."
 
   statistics:
-     # db_file_size: Size of the database in SI Units
+    # db_file_size: Size of the database in SI Units
     # total_waypoints: Total amount of waypoints
     # private_waypoints: Amount of private waypoints
     # death_waypoints: Amount of death waypoints
@@ -90,7 +90,7 @@ command:
     # total_folders: Total amount of folders
     # private_folders: Amount of private folders
     # public_folders: Amount of public folders
-    # permission_folders: Amount of permission folders                                                                                                        
+    # permission_folders: Amount of permission folders 
     message: |
       <gray>數據庫統計
       <gray>文件大小: <yellow><db_file_size>
@@ -165,8 +165,8 @@ message:
           <red>指定坐標需為以下格式:
           <green>102 35 -238
     limitReached:
-private: "<red>你已經達到了可創建的個人座標上限。"
-public: "<red>你已經達到了可創建的公開座標上限。"
+      private: "<red>你已經達到了可創建的個人座標上限。"
+      public: "<red>你已經達到了可創建的公開座標上限。"
     nameDuplicate:
       private: "<red>私有座標不允許重名."
       public: "<red>公開座標不允許重名."
@@ -180,9 +180,9 @@ public: "<red>你已經達到了可創建的公開座標上限。"
     newIconInvalid: "<red>嘗試用作座標圖標的物品未在允許列表內."
 
   folder:
-limitReached:
-  private: "<red>你已經達到了可創建的個人資料夾上限。"
-  public: "<red>你已經達到了可創建的公開資料夾上限。"
+    limitReached:
+      private: "<red>你已經達到了可創建的個人資料夾上限。"
+      public: "<red>你已經達到了可創建的公開資料夾上限。"
     nameDuplicate:
       private: "<red>私有座標組不允許重名."
       public: "<red>公開座標組不允許重名."
@@ -214,8 +214,8 @@ limitReached:
         <red>你沒有足夠的經驗值用於傳送.
         <red>你當前的經驗值: <yellow><current_points>
         <red>需要經驗值: <yellow><required_points>
-      # current_balance: Vault balance of the player
-      # required_balance: Vault balance required for teleportation
+        # current_balance: Vault balance of the player
+        # required_balance: Vault balance required for teleportation
       balance: |
         <red>你沒有足夠的金幣用於傳送.
         <red>需要金幣: <green><required_balance>
@@ -270,23 +270,23 @@ inventory:
     self: "<dark_gray>你的座標"
     # name: Name of the other player
     other: "<dark_gray>玩家 <blue><name> <dark_gray>的座標"
-    public: "<dark_gray>Public waypoints"
-    permission: "<dark_gray>Permission waypoints"
+    public: "<dark_gray>公共座標"
+    permission: "<dark_gray>權限座標"
     # folder: Name of the folder
-    folder: "<dark_gray>Folder <gold><folder>"
-    settings: "<dark_gray>Settings"
+    folder: "<dark_gray>資料夾 <gold><folder>"
+    settings: "<dark_gray>設置"
     # waypoint: Name of the waypoint
-    waypoint: "<dark_gray>Waypoint <gold><waypoint>"
-    playerTracking: "<dark_gray>Player tracking"
+    waypoint: "<dark_gray>座標 <gold><waypoint>"
+    playerTracking: "<dark_gray>玩家追蹤"
     sharing:
       # waypoint: Name of the waypoint
-      selectPlayer: "<dark_gray>Select player to share <gold><waypoint></gold> with"
-      sharedWaypoints: "<dark_gray>Waypoints that have been shared with you"
+      selectPlayer: "<dark_gray>選擇玩家以分享 <gold><waypoint></gold>"
+      sharedWaypoints: "<dark_gray>與你共享的座標"
       # waypoint: Name of the waypoint
-      sharedWith: "<dark_gray>Players you have shared <gold><waypoint></gold> with"
-    confirm: "<dark_gray>Are you sure?"
-    selectFolder: "<dark_gray>Select folder for <gold><waypoint>"
-    selectBeaconColor: "<dark_gray>Select beacon color for <gold><waypoint>"
+      sharedWith: "<dark_gray>你與以下玩家共享的 <gold><waypoint></gold>"
+    confirm: "<dark_gray>你確定嗎？"
+    selectFolder: "<dark_gray>選擇資料夾以儲存 <gold><waypoint>"
+    selectBeaconColor: "<dark_gray>選擇座標的信標顏色 <gold><waypoint>"
 
   general:
     previous:
@@ -479,11 +479,11 @@ inventory:
         displayName: "<aqua><name>"
         description: *waypointDescription
         customDescription: *waypointCustomDescription
-        owner: "<gray>擁有者: <gold><owner>"
       permission:
         displayName: "<light_purple><name>"
         description: *waypointDescription
         customDescription: *waypointCustomDescription
+        owner: "<gray>擁有者: <gold><owner>"
 
     select:
       displayName: "<yellow>選擇座標"
@@ -679,7 +679,7 @@ inventory:
       disabled:
         displayName: "<gray>自身隱藏"
         description: "<gray>其他玩家不可追蹤你"
-
+        
     # name: Name of the player
     # world: World where the player is located at
     # x, y, z: Coordinates of the player
