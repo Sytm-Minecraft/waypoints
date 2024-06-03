@@ -33,7 +33,7 @@ command:
       waypointNotFound: "<red>找不到 UUID 為 <yellow><uuid><red> 的座標."
 
     temporaryWaypoint:
-      beaconColorNotFound: "<red>所提供的信標顏色不存在."
+      beaconColorNotFound: "<red>所提供的烽火台顏色不存在."
 
     uuid:
       noMatch: "<red>指定關鍵詞沒有對應搜索結果."
@@ -286,7 +286,7 @@ inventory:
       sharedWith: "<dark_gray>你與以下玩家共享的 <gold><waypoint></gold>"
     confirm: "<dark_gray>你確定嗎？"
     selectFolder: "<dark_gray>選擇資料夾以儲存 <gold><waypoint>"
-    selectBeaconColor: "<dark_gray>選擇座標的信標顏色 <gold><waypoint>"
+    selectBeaconColor: "<dark_gray>選擇座標的烽火台顏色 <gold><waypoint>"
 
   general:
     previous:
@@ -393,10 +393,10 @@ inventory:
           <gray>在你的動作條上顯示一個指示器,
           <gray>告訴你應朝哪個方向看以到達座標
       beacon:
-        name: "信標"
+        name: "烽火台"
         description: |
           <gray>當你進入座標的視距後,
-          <gray>信標光柱會在座標上方顯示, 可自定義顏色
+          <gray>烽火台光柱會在座標上方顯示, 可自定義顏色
       blinkingBlock:
         name: "閃爍方塊"
         description: |
@@ -539,7 +539,7 @@ inventory:
         <red>你必須先訪問該座標
         <red>才能傳送至該處.
     selectBeaconColor:
-      displayName: "<yellow>修改信標顏色"
+      displayName: "<yellow>修改烽火台顏色"
       description: ""
     getUuid:
       displayName: "<yellow>獲取座標 UUID"
