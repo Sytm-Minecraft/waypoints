@@ -403,9 +403,9 @@ inventory:
           <gray>當你進入座標附近時,
           <gray>閃爍方塊會在座標上方顯示確切位置
       bossBar:
-        name: "首領血條"
+        name: "Boss狀態血條"
         description: |
-          <gray>在首領血條中顯示一個指南針,
+          <gray>在Boss狀態血條中顯示一個指南針,
           <gray>並標記你選擇的座標
       compass:
         name: "指南針"
