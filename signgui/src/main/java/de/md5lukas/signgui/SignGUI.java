@@ -10,7 +10,6 @@ import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.BlockPosition;
 import com.google.common.base.Preconditions;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import net.kyori.adventure.text.Component;
@@ -19,6 +18,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
+import org.bukkit.block.TileState;
 import org.bukkit.block.sign.Side;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -29,7 +29,7 @@ public class SignGUI {
 
   private static final int OFFSET = 4; // Needs to be closer to the player since 1.20
   private static final List<Component> EMPTY_LINES =
-      Arrays.asList(Component.empty(), Component.empty(), Component.empty(), Component.empty());
+      List.of(Component.empty(), Component.empty(), Component.empty(), Component.empty());
 
   private final @NotNull Plugin plugin;
   private final @NotNull ProtocolManager protocolManager;
@@ -74,7 +74,11 @@ public class SignGUI {
             protocolManager.removePacketListener(this);
             event.setCancelled(true);
             open = false;
-            player.sendBlockChange(signLocation, signLocation.getBlock().getBlockData());
+            final var realBlock = signLocation.getBlock();
+            player.sendBlockChange(signLocation, realBlock.getBlockData());
+            if (realBlock.getState() instanceof TileState tileState) {
+              player.sendBlockUpdate(signLocation, tileState);
+            }
 
             final var lines = event.getPacket().getStringArrays().read(0);
 
