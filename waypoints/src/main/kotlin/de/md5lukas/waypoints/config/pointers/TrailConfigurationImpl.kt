@@ -59,11 +59,11 @@ class TrailConfigurationImpl : RepeatingPointerConfigurationImpl(), TrailConfigu
     private set
 
   @ConfigPath("particle.normal")
-  override var particleNormal: Particle = Particle.VILLAGER_HAPPY
+  override var particleNormal: Particle = Particle.WAX_ON
     private set
 
   @ConfigPath("particle.highlight")
-  override var particleHighlight: Particle = Particle.FLAME
+  override var particleHighlight: Particle = Particle.WAX_OFF
     private set
 
   override var highlightDistance: Int = 0

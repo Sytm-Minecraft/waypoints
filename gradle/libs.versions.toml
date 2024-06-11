@@ -1,9 +1,8 @@
 [versions]
-kotlin = "1.9.24"
+kotlin = "2.0.0"
 coroutines = "1.8.1"
-jvmToolchain = "17"
-paper = "1.20.4-R0.1-SNAPSHOT"
-commandApi = "9.4.1"
+jvmToolchain = "21"
+paper = "1.20.6-R0.1-SNAPSHOT"
 
 dynmap = "3.5-SNAPSHOT"
 
@@ -14,7 +13,6 @@ coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core"
 annotations = { group = "org.jetbrains", name = "annotations", version = "24.0.1" }
 
 paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
-spigot = { group = "org.spigotmc", name = "spigot-api", version.ref = "paper" }
 
 # Required dependencies
 # (own)
@@ -22,6 +20,7 @@ md5Commons = { group = "de.md5lukas", name = "md5-commons", version = "3.0.0-SNA
 kinvs = { group = "de.md5lukas", name = "kinvs", version = "1.1.0" }
 sqliteHelper = { group = "de.md5lukas", name = "sqlite-kotlin-helper", version = "1.2.2" }
 konfig = { group = "de.md5lukas", name = "spigot-konfig", version = "1.0.1" }
+paperBrigadier = { group = "de.md5lukas.paper", name = "paper-brigadier", version = "1.0.0" }
 pathfinder = { group = "de.md5lukas", name = "pathfinder", version = "1.0.0-SNAPSHOT" }
 
 # (external)
@@ -29,9 +28,6 @@ schedulers = { group = "de.md5lukas", name = "schedulers", version = "1.0.1" }
 skedule = { group = "de.md5lukas", name = "skedule", version = "2.0.0" }
 anvilGui = { group = "de.md5lukas", name = "anvilgui", version = "2.0.0-SNAPSHOT" }
 bStats = { group = "org.bstats", name = "bstats-bukkit", version = "3.0.2" }
-commandapi-core = { group = "dev.jorel", name = "commandapi-bukkit-core", version.ref = "commandApi" }
-commandapi-kotlin = { group = "dev.jorel", name = "commandapi-bukkit-kotlin", version.ref = "commandApi" }
-brigadier = { group = "com.mojang", name = "brigadier", version = "1.1.8" }
 
 # Optional dependencies
 vaultApi = { group = "com.github.MilkBowl", name = "VaultAPI", version = "1.7.1" }
@@ -67,6 +63,3 @@ minotaur = { id = "com.modrinth.minotaur", version = "2.+" }
 runPaper = { id = "xyz.jpenilla.run-paper", version = "2.+" }
 spotless = { id = "com.diffplug.spotless", version = "6.+" }
 changelog = { id = "org.jetbrains.changelog", version = "2.1.0" }
-
-[bundles]
-commandApi = ["commandapi-core", "commandapi-kotlin", "brigadier"]

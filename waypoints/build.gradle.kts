@@ -41,13 +41,13 @@ dependencies {
   implementation(libs.md5Commons)
   implementation(libs.kinvs)
   implementation(libs.konfig)
+  implementation(libs.paperBrigadier) { this.isChanging = true }
 
   // Required dependencies
   implementation(libs.schedulers)
   implementation(libs.skedule)
   implementation(libs.anvilGui)
   implementation(libs.bStats)
-  implementation(libs.bundles.commandApi)
 
   // Optional dependencies
   implementation(libs.vaultApi)
@@ -64,6 +64,13 @@ dependencies {
   testRuntimeOnly(libs.junitLauncher)
 }
 
+configurations.all {
+  resolutionStrategy {
+    cacheChangingModulesFor(10, TimeUnit.MINUTES)
+    cacheDynamicVersionsFor(10, TimeUnit.MINUTES)
+  }
+}
+
 tasks {
   register<ResourceIndexTask>("createResourceIndex")
 
@@ -73,8 +80,7 @@ tasks {
     val properties =
         mapOf(
             "version" to project.version,
-            "apiVersion" to
-                libs.versions.paper.get().substringBefore('-').split('.').take(2).joinToString("."),
+            "apiVersion" to libs.versions.paper.get().substringBefore('-'),
             "kotlinVersion" to libs.versions.kotlin.get(),
             "coroutinesVersion" to libs.versions.coroutines.get(),
         )
@@ -114,6 +120,7 @@ tasks {
       include(dependency(libs.md5Commons.get()))
       include(dependency(libs.kinvs.get()))
       include(dependency(libs.konfig.get()))
+      include(dependency(libs.paperBrigadier.get()))
 
       include(dependency(libs.schedulers.get()))
       include(dependency(libs.skedule.get()))
@@ -121,8 +128,8 @@ tasks {
       include(dependency("org.bstats::"))
     }
 
-    arrayOf("commons", "kinvs", "konfig", "schedulers", "signgui").forEach {
-      relocate("de.md5lukas.$it", "de.md5lukas.waypoints.libs.$it")
+    arrayOf("commons", "kinvs", "konfig", "schedulers", "signgui", "paper.brigadier").forEach {
+      relocate("de.md5lukas.$it", "de.md5lukas.waypoints.libs.${it.substringAfterLast('.')}")
     }
     arrayOf("com.okkero.skedule", "net.wesjd.anvilgui", "org.bstats").forEach {
       relocate(it, "de.md5lukas.waypoints.libs.${it.substringAfterLast('.')}")
@@ -136,8 +143,8 @@ tasks {
     minecraftVersion(libs.versions.paper.get().substringBefore('-'))
 
     downloadPlugins {
-      modrinth("commandapi", libs.versions.commandApi.get())
-      github("dmulloy2", "ProtocolLib", "5.2.0", "ProtocolLib.jar")
+      url(
+          "https://ci.dmulloy2.net/job/ProtocolLib/lastSuccessfulBuild/artifact/build/libs/ProtocolLib.jar")
     }
   }
 
@@ -159,7 +166,7 @@ modrinth {
   versionType = "release"
   uploadFile.set(tasks.shadowJar)
 
-  gameVersions.addAll("1.20.2", "1.20.4", "1.20.6")
+  gameVersions.addAll(libs.versions.paper.get().substringBefore('-'))
   loaders.addAll("paper", "folia")
 
   syncBodyFrom = provider { rootProject.file("README.md").readText() }
@@ -169,7 +176,6 @@ modrinth {
   }
 
   dependencies {
-    with(required) { project("commandapi") }
     with(optional) {
       project("pl3xmap")
       project("bluemap")

@@ -1,7 +1,7 @@
 package de.md5lukas.waypoints.util
 
 import de.md5lukas.commons.paper.editMeta
-import java.net.URL
+import java.net.URI
 import java.util.*
 import org.bukkit.Location
 import org.bukkit.Material
@@ -46,7 +46,9 @@ fun createCustomPlayerHead(plugin: Plugin, textureId: String): ItemStack {
   val profile = plugin.server.createProfile(UUID.randomUUID(), "CUSTOM_HEAD")
 
   profile.setTextures(
-      profile.textures.also { it.skin = URL("https://textures.minecraft.net/texture/$textureId") })
+      profile.textures.also {
+        it.skin = URI.create("https://textures.minecraft.net/texture/$textureId").toURL()
+      })
 
   val stack = ItemStack(Material.PLAYER_HEAD)
   stack.editMeta<SkullMeta> { playerProfile = profile }

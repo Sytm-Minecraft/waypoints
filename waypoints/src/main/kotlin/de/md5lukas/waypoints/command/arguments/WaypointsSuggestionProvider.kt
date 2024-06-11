@@ -1,37 +1,39 @@
-package de.md5lukas.waypoints.command
+package de.md5lukas.waypoints.command.arguments
 
 import com.mojang.brigadier.Message
+import com.mojang.brigadier.context.CommandContext
+import com.mojang.brigadier.suggestion.SuggestionProvider
 import com.mojang.brigadier.suggestion.Suggestions
 import com.mojang.brigadier.suggestion.SuggestionsBuilder
 import com.okkero.skedule.future
 import de.md5lukas.commons.containsNonWordCharacter
 import de.md5lukas.waypoints.WaypointsPlugin
 import de.md5lukas.waypoints.api.Waypoint
-import dev.jorel.commandapi.BukkitTooltip
-import dev.jorel.commandapi.SuggestionInfo
-import dev.jorel.commandapi.arguments.ArgumentSuggestions
+import io.papermc.paper.command.brigadier.CommandSourceStack
+import io.papermc.paper.command.brigadier.MessageComponentSerializer
 import java.util.concurrent.CompletableFuture
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class WaypointsArgumentSuggestions(
+@Suppress("UnstableApiUsage")
+class WaypointsSuggestionProvider(
     private val plugin: WaypointsPlugin,
     private val textMode: Boolean,
     private val allowGlobals: Boolean,
     private val filter: (suspend (CommandSender, Waypoint) -> Boolean)? = null,
-) : ArgumentSuggestions<CommandSender> {
+) : SuggestionProvider<CommandSourceStack> {
 
-  override fun suggest(
-      info: SuggestionInfo<CommandSender>,
-      builder: SuggestionsBuilder,
+  override fun getSuggestions(
+      context: CommandContext<CommandSourceStack>,
+      builder: SuggestionsBuilder
   ): CompletableFuture<Suggestions> {
-    val sender = info.sender
+    val sender = (context.source as CommandSourceStack).sender
 
     return plugin.future {
       val query =
           if (textMode) {
-            info.currentArg.removePrefix("\"").removeSuffix("\"")
-          } else info.currentArg
+            builder.remaining.removePrefix("\"").removeSuffix("\"")
+          } else builder.remaining
 
       if (allowGlobals) {
         val publicPrefix = plugin.translations.COMMAND_SEARCH_PREFIX_PUBLIC.rawText + "/"
@@ -79,9 +81,10 @@ class WaypointsArgumentSuggestions(
 
   private fun Waypoint.getTooltip(sender: CommandSender): Message =
       plugin.apiExtensions.run {
-        BukkitTooltip.messageFromAdventureComponent(
-            plugin.translations.COMMAND_SEARCH_TOOLTIP.withReplacements(
-                *getResolvers(sender as? Player)))
+        MessageComponentSerializer.message()
+            .serialize(
+                plugin.translations.COMMAND_SEARCH_TOOLTIP.withReplacements(
+                    *getResolvers(sender as? Player)))
       }
 
   private suspend fun shouldDiscard(sender: CommandSender, waypoint: Waypoint) =

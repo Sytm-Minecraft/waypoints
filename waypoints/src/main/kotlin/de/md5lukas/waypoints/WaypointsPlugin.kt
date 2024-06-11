@@ -34,6 +34,7 @@ import de.md5lukas.waypoints.tasks.CleanDatabaseTask
 import de.md5lukas.waypoints.util.APIExtensions
 import de.md5lukas.waypoints.util.TeleportManager
 import de.md5lukas.waypoints.util.UpdateChecker
+import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import java.io.File
 import java.util.concurrent.TimeUnit
 import java.util.logging.Level
@@ -222,9 +223,16 @@ class WaypointsPlugin : JavaPlugin() {
     }
   }
 
+  @Suppress("UnstableApiUsage")
   private fun registerCommands() {
-    WaypointsCommand(this).register()
-    WaypointsScriptCommand(this).register()
+    lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) {
+      val registrar = it.registrar()
+      registrar.register(
+          WaypointsCommand(this).buildCommand(), waypointsConfig.general.commands.waypointsAliases)
+      registrar.register(
+          WaypointsScriptCommand(this).buildCommand(),
+          waypointsConfig.general.commands.waypointsScriptAliases)
+    }
   }
 
   private fun registerEvents() {

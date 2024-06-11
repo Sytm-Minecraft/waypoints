@@ -45,7 +45,7 @@ class PointerManagerHooks(private val plugin: WaypointsPlugin) : Hooks {
           ->
           PointerVariant.entries.firstOrNull { it.key == storedKey }?.let { result[it] = value }
         }
-        result as Map<PointerVariant, Boolean>
+        result
       }
 
   private inner class ActionBarPointerHooks : Hooks.ActionBar {
