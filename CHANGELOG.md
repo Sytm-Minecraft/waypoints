@@ -2,8 +2,12 @@
 
 ## [Unreleased]
 
+### Added
+- Added Traditional Chinese translations by ItzTheBear
+
 ### Changed
 - **CommandAPI is no longer required**
+- Updated Simplified Chinese translations by SnowCutieOwO
 
 ## 4.5.1
 
