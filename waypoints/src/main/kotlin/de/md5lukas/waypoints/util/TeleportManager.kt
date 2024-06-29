@@ -118,8 +118,7 @@ class TeleportManager(private val plugin: WaypointsPlugin) : Listener {
 
     val playerData = plugin.api.getWaypointPlayer(player.uniqueId)
 
-    val cooldownUntil = playerData.getCooldownUntil(waypoint.type)
-    if (cooldownUntil != null) {
+    playerData.getCooldownUntil(waypoint.type)?.let { cooldownUntil ->
       val remainingMillis = Duration.between(Instant.now(), cooldownUntil).toMillis()
       if (remainingMillis > 0) {
         val remainingCooldown =
@@ -216,7 +215,12 @@ class TeleportManager(private val plugin: WaypointsPlugin) : Listener {
           val cooldown = config.cooldown
 
           if (cooldown.toSeconds() > 0) {
-            playerData.setCooldownUntil(waypoint.type, OffsetDateTime.now().plus(cooldown))
+            val cooldownUntil = OffsetDateTime.now().plus(cooldown)
+            playerData.setCooldownUntil(waypoint.type, cooldownUntil)
+            config.alsoApplyCooldownTo.forEach {
+              if (it === waypoint.type) return@forEach
+              playerData.setCooldownUntil(it, cooldownUntil)
+            }
           }
         } else {
           when (config.paymentType) {

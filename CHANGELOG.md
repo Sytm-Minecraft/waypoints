@@ -4,6 +4,7 @@
 
 ### Added
 - Added Traditional Chinese translations by ItzTheBear
+- Added config option to apply cooldowns from one waypoint type to other ones
 
 ### Changed
 - **CommandAPI is no longer required**

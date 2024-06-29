@@ -140,6 +140,9 @@ general:
     # The cooldown between each teleportation for a player
     # Set to 0s to disable
     #
+    # alsoApplyCooldownTo:
+    # When teleporting to a waypoint of this type, all listed types will also receive the same cooldown as this one.
+    #
     # mustVisit:
     # If set to true, the player must have visited the waypoint before.
     # To mark a waypoint as visited the player must have either created it at his current location without coordinates
@@ -155,6 +158,8 @@ general:
     # This only affects the price of the teleportation
     private:
       cooldown: 24h
+      alsoApplyCooldownTo:
+        - death
 
       mustVisit: true
 
@@ -165,6 +170,8 @@ general:
 
     death:
       cooldown: 24h
+      alsoApplyCooldownTo:
+        - private
 
       # Allows the player to only teleport to the last location they died at, not all of them
       onlyLastWaypoint: true
@@ -176,6 +183,7 @@ general:
 
     public:
       cooldown: 24h
+      alsoApplyCooldownTo: []
 
       mustVisit: true
 
@@ -186,6 +194,7 @@ general:
 
     permission:
       cooldown: 4h
+      alsoApplyCooldownTo: []
 
       mustVisit: false
 
