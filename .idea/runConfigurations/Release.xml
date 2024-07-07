@@ -14,7 +14,6 @@
           <option value="waypoints:modrinth" />
           <option value="waypoints:modrinthSyncBody" />
           <option value="waypoints-api:publish" />
-          <option value="pointers:publish" />
         </list>
       </option>
       <option name="vmOptions" />

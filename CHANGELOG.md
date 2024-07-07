@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 4.5.2
+
 ### Added
 - Traditional Chinese translations by ItzTheBear
 - Option to apply cooldowns from one waypoint type to other ones (`general.teleport.private/death/public/permission.alsoApplyCooldownTo`)
