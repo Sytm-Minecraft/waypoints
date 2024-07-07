@@ -10,6 +10,7 @@ import de.md5lukas.waypoints.pointers.PlayerTrackable
 import de.md5lukas.waypoints.pointers.WaypointTrackable
 import de.md5lukas.waypoints.util.checkWorldAvailability
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.time.delay
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -25,8 +26,10 @@ class PointerEvents(private val plugin: WaypointsPlugin) : Listener {
 
   @EventHandler(priority = EventPriority.MONITOR)
   fun onPlayerRespawn(e: PlayerRespawnEvent) {
+    val player = e.player
+    val config = plugin.waypointsConfig.general.pointToDeathWaypointOnDeath
     if (plugin.waypointsConfig.general.features.deathWaypoints &&
-        plugin.waypointsConfig.general.pointToDeathWaypointOnDeath.enabled &&
+        config.enabled &&
         checkWorldAvailability(plugin, e.respawnLocation.world!!)) {
       plugin.skedule(e.player) {
         plugin.api
@@ -34,7 +37,20 @@ class PointerEvents(private val plugin: WaypointsPlugin) : Listener {
             .deathFolder
             .getWaypoints()
             .maxByOrNull { it.createdAt }
-            ?.let { pointerManager.enable(e.player, WaypointTrackable(plugin, it)) }
+            ?.let { deathWaypoint ->
+              val trackable = WaypointTrackable(plugin, deathWaypoint)
+              pointerManager.enable(e.player, trackable)
+              if (config.autoDeselectAfter.isPositive) {
+                delay(config.autoDeselectAfter)
+                if (player.isOnline) {
+                  pointerManager.disable(player, trackable.asPredicate())
+                } else {
+                  val apiPlayer = plugin.api.getWaypointPlayer(player.uniqueId)
+                  apiPlayer.setSelectedWaypoints(
+                      apiPlayer.getSelectedWaypoints().filterNot { deathWaypoint.id == it.id })
+                }
+              }
+            }
       }
     }
   }

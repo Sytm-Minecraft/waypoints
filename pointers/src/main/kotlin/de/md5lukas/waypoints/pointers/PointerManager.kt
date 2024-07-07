@@ -3,6 +3,7 @@ package de.md5lukas.waypoints.pointers
 import de.md5lukas.waypoints.pointers.config.PointerConfiguration
 import de.md5lukas.waypoints.pointers.variants.PointerVariant
 import de.md5lukas.waypoints.pointers.variants.TrailPointer
+import java.util.UUID
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.ConcurrentHashMap
 import net.kyori.adventure.text.Component
@@ -35,7 +36,7 @@ class PointerManager(
     plugin.server.pluginManager.registerEvents(this, plugin)
   }
 
-  private val players = ConcurrentHashMap<Player, ManagedPlayer>()
+  private val players = ConcurrentHashMap<UUID, ManagedPlayer>()
 
   /**
    * Safely shuts down all pointers, recreates them based on the new configuration and restarts them
@@ -56,7 +57,7 @@ class PointerManager(
    * @see Hooks.loadEnabledPointers
    */
   fun reapplyConfiguration(player: Player) {
-    players[player]?.reapplyConfiguration()
+    players[player.uniqueId]?.reapplyConfiguration()
   }
 
   /**
@@ -67,7 +68,7 @@ class PointerManager(
   fun enable(player: Player, trackable: Trackable): Unit = enable(player, trackable, true)
 
   private fun enable(player: Player, trackable: Trackable, save: Boolean) {
-    val managedPlayer = players.computeIfAbsent(player) { ManagedPlayer(this, it) }
+    val managedPlayer = players.computeIfAbsent(player.uniqueId) { ManagedPlayer(this, player) }
     managedPlayer.show(trackable)
     if (save) {
       hooks.saveActiveTrackables(player, managedPlayer.readOnlyTracked)
@@ -83,13 +84,13 @@ class PointerManager(
       disable(player, predicate, true)
 
   private fun disable(player: Player, predicate: TrackablePredicate, save: Boolean) {
-    players[player]?.let { managedPlayer ->
+    players[player.uniqueId]?.let { managedPlayer ->
       managedPlayer.readOnlyTracked.filter(predicate).forEach { managedPlayer.hide(it) }
       if (save) {
         hooks.saveActiveTrackables(player, managedPlayer.readOnlyTracked)
       }
       if (managedPlayer.canBeDiscarded) {
-        players -= player
+        players -= player.uniqueId
       }
     }
   }
@@ -100,12 +101,12 @@ class PointerManager(
    * This will call [Hooks.saveActiveTrackables] for every player.
    */
   fun disableAll(predicate: TrackablePredicate) {
-    players.keys.forEach { disable(it, predicate) }
+    players.keys.forEach { uuid -> plugin.server.getPlayer(uuid)?.let { disable(it, predicate) } }
   }
 
   /** Gets the current trackables for the player */
   fun getCurrentTargets(player: Player): Collection<Trackable> =
-      players[player]?.readOnlyTracked ?: emptyList()
+      players[player.uniqueId]?.readOnlyTracked ?: emptyList()
 
   @EventHandler
   internal fun onPlayerJoin(e: PlayerJoinEvent) {
@@ -116,7 +117,7 @@ class PointerManager(
 
   @EventHandler
   internal fun onQuit(e: PlayerQuitEvent) {
-    players.remove(e.player)?.immediateCleanup()
+    players.remove(e.player.uniqueId)?.immediateCleanup()
   }
 
   @EventHandler
@@ -144,7 +145,9 @@ class PointerManager(
   internal fun onPluginDisable(e: PluginDisableEvent) {
     if (e.plugin !== plugin) return
 
-    players.keys.forEach { disable(it, { true }, false) }
+    players.keys.forEach { uuid ->
+      plugin.server.getPlayer(uuid)?.let { disable(it, { true }, false) }
+    }
   }
 
   /** Hooks that get called by the [PointerManager] and some pointers */

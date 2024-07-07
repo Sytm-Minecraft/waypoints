@@ -3,8 +3,9 @@
 ## [Unreleased]
 
 ### Added
-- Added Traditional Chinese translations by ItzTheBear
-- Added config option to apply cooldowns from one waypoint type to other ones
+- Traditional Chinese translations by ItzTheBear
+- Option to apply cooldowns from one waypoint type to other ones (`general.teleport.private/death/public/permission.alsoApplyCooldownTo`)
+- Option to automatically deselect the automatically selected death waypoint after a certain time (`general.pointToDeathWaypointOnDeath.autoDeselectAfter`)
 
 ### Changed
 - **CommandAPI is no longer required**

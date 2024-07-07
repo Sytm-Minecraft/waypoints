@@ -43,6 +43,8 @@ general:
   # Automatically select the last death waypoint upon death
   pointToDeathWaypointOnDeath:
     enabled: true
+    # When set to a value greater than zero, the death waypoint will be automatically deselected after the set time
+    autoDeselectAfter: 0s
 
   # Specify in which worlds waypoints can be created
   # Players with the permission waypoints.modify.anywhere can place waypoints wherever they want.

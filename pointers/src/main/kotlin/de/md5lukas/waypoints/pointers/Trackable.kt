@@ -35,7 +35,7 @@ interface Trackable {
   val seed: Long
     get() = Random.nextLong()
 
-  fun asPredicate(): TrackablePredicate = { it === this }
+  fun asPredicate(): TrackablePredicate = { it == this }
 
   /**
    * If the set is non-empty, only the PointerVariant's in it will be used for this trackable. The
