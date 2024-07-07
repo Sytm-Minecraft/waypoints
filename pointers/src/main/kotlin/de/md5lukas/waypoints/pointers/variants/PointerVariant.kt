@@ -18,5 +18,8 @@ enum class PointerVariant(
   COMPASS("compass", { it.compass.enabled }, ::CompassPointer),
   HOLOGRAM("hologram", { it.hologram.enabled }, ::HologramPointer),
   PARTICLE("particle", { it.particle.enabled }, ::ParticlePointer),
-  TRAIL("trail", { it.trail.enabled }, ::TrailPointer)
+  TRAIL("trail", { it.trail.enabled }, ::TrailPointer);
+
+  internal fun canUse(enabledPointerVariants: Set<PointerVariant>) =
+      enabledPointerVariants.isEmpty() || this in enabledPointerVariants
 }

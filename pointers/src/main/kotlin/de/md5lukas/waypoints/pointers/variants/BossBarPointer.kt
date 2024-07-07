@@ -23,7 +23,7 @@ internal class BossBarPointer(
     pointerManager: PointerManager,
     player: Player,
     scheduler: AbstractScheduler,
-) : Pointer(pointerManager, player, scheduler) {
+) : Pointer(pointerManager, player, scheduler, PointerVariant.BOSS_BAR) {
 
   private val config = pointerManager.configuration.bossBar
 
@@ -47,12 +47,6 @@ internal class BossBarPointer(
 
   override fun preUpdates() {
     playerLocation = player.location
-    if (bossBar === null) {
-      bossBar =
-          BossBar.bossBar(Component.empty(), 1f, config.barColor, config.barStyle).also {
-            player.showBossBar(it)
-          }
-    }
   }
 
   override fun update(trackable: Trackable, translatedTarget: Location?) {
@@ -75,6 +69,20 @@ internal class BossBarPointer(
   }
 
   override fun postUpdates() {
+    if (targetData.isEmpty()) {
+      bossBar?.let {
+        player.hideBossBar(it)
+        bossBar = null
+      }
+      return
+    } else {
+      if (bossBar === null) {
+        bossBar =
+            BossBar.bossBar(Component.empty(), 1f, config.barColor, config.barStyle).also {
+              player.showBossBar(it)
+            }
+      }
+    }
     counter = (counter + 1) % config.recalculateEveryNthInterval
 
     val playerAngle = normalizeAngleTo360(playerLocation.yaw)

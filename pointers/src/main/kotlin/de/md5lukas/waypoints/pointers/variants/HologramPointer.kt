@@ -19,7 +19,7 @@ internal class HologramPointer(
     pointerManager: PointerManager,
     player: Player,
     scheduler: AbstractScheduler,
-) : Pointer(pointerManager, player, scheduler) {
+) : Pointer(pointerManager, player, scheduler, PointerVariant.HOLOGRAM) {
 
   private val config = pointerManager.configuration.hologram
 

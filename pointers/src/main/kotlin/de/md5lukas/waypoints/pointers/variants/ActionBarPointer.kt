@@ -15,7 +15,7 @@ internal class ActionBarPointer(
     pointerManager: PointerManager,
     player: Player,
     scheduler: AbstractScheduler,
-) : Pointer(pointerManager, player, scheduler) {
+) : Pointer(pointerManager, player, scheduler, PointerVariant.ACTION_BAR) {
 
   private val config = pointerManager.configuration.actionBar
   override val interval: Int

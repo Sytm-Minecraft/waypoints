@@ -17,7 +17,7 @@ java {
 
 group = "de.md5lukas"
 
-version = "1.0.0"
+version = project.property("signGuiVersion") as String
 
 publishing {
   repositories {

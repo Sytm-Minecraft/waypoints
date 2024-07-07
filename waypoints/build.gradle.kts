@@ -64,13 +64,6 @@ dependencies {
   testRuntimeOnly(libs.junitLauncher)
 }
 
-configurations.all {
-  resolutionStrategy {
-    cacheChangingModulesFor(10, TimeUnit.MINUTES)
-    cacheDynamicVersionsFor(10, TimeUnit.MINUTES)
-  }
-}
-
 tasks {
   register<ResourceIndexTask>("createResourceIndex")
 

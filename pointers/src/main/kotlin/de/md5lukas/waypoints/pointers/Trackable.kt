@@ -1,5 +1,6 @@
 package de.md5lukas.waypoints.pointers
 
+import de.md5lukas.waypoints.pointers.variants.PointerVariant
 import kotlin.random.Random
 import net.kyori.adventure.text.Component
 import org.bukkit.Location
@@ -35,4 +36,11 @@ interface Trackable {
     get() = Random.nextLong()
 
   fun asPredicate(): TrackablePredicate = { it === this }
+
+  /**
+   * If the set is non-empty, only the PointerVariant's in it will be used for this trackable. The
+   * returned value must be the same for every call to avoid undefined behaviour
+   */
+  val enabledPointerVariants: Set<PointerVariant>
+    get() = emptySet()
 }

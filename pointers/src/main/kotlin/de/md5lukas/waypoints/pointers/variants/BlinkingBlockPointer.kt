@@ -14,7 +14,7 @@ internal class BlinkingBlockPointer(
     pointerManager: PointerManager,
     player: Player,
     scheduler: AbstractScheduler,
-) : Pointer(pointerManager, player, scheduler) {
+) : Pointer(pointerManager, player, scheduler, PointerVariant.BLINKING_BLOCK) {
 
   private val config = pointerManager.configuration.blinkingBlock
 

@@ -13,6 +13,7 @@ coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core"
 annotations = { group = "org.jetbrains", name = "annotations", version = "24.0.1" }
 
 paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+paperJava17 = { group = "io.papermc.paper", name = "paper-api", version = "1.20.4-R0.1-SNAPSHOT" }
 
 # Required dependencies
 # (own)

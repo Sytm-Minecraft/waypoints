@@ -12,14 +12,16 @@ plugins {
 repositories {}
 
 dependencies {
-  api(libs.paper)
+  api(libs.paperJava17)
   api(libs.stdlib)
 
   implementation(libs.schedulers)
   implementation(libs.pathfinder)
 }
 
-kotlin { jvmToolchain(libs.versions.jvmToolchain.get().toInt()) }
+kotlin { jvmToolchain(17) }
+
+version = project.property("pointersVersion") as String
 
 val sourcesJar by
     tasks.creating(Jar::class) {

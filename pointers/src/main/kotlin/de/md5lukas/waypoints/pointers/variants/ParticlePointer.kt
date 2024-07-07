@@ -12,7 +12,7 @@ internal class ParticlePointer(
     pointerManager: PointerManager,
     player: Player,
     scheduler: AbstractScheduler,
-) : Pointer(pointerManager, player, scheduler) {
+) : Pointer(pointerManager, player, scheduler, PointerVariant.PARTICLE) {
 
   private val config = pointerManager.configuration.particle
 

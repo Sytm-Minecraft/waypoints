@@ -135,6 +135,7 @@ internal class ManagedPlayer(
     override fun run() {
       synchronized(hide) {
         hide.forEach {
+          if (!pointer.variant.canUse(it.enabledPointerVariants)) return@forEach
           logger.debug("Hiding {} on {}", it, pointer)
           if (pointer.supportsMultipleTargets) {
             pointer.hide(it, translateTarget(it))
@@ -154,10 +155,13 @@ internal class ManagedPlayer(
       if (pointer.supportsMultipleTargets) {
         logger.debug("Updating all tracked for {}", this)
         pointer.preUpdates()
-        tracked.forEach { pointer.update(it, translateTarget(it)) }
+        tracked.forEach {
+          if (pointer.variant.canUse(it.enabledPointerVariants))
+              pointer.update(it, translateTarget(it))
+        }
         pointer.postUpdates()
       } else {
-        val primary = tracked.lastOrNull()
+        val primary = tracked.lastOrNull { pointer.variant.canUse(it.enabledPointerVariants) }
         var updatedRequired = true
         logger.debug(
             "Updating primary Trackable. Previous {}, current {}", previousPrimary, primary)
@@ -178,7 +182,10 @@ internal class ManagedPlayer(
     fun immediateCleanup() {
       logger.debug("Performing immediate clean up")
       if (pointer.supportsMultipleTargets) {
-        tracked.forEach { pointer.immediateCleanup(it, translateTarget(it)) }
+        tracked.forEach {
+          if (pointer.variant.canUse(it.enabledPointerVariants))
+              pointer.immediateCleanup(it, translateTarget(it))
+        }
       } else {
         previousPrimary?.let { pointer.immediateCleanup(it, translateTarget(it)) }
       }

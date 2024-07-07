@@ -15,7 +15,7 @@ internal class BeaconPointer(
     pointerManager: PointerManager,
     player: Player,
     scheduler: AbstractScheduler,
-) : Pointer(pointerManager, player, scheduler) {
+) : Pointer(pointerManager, player, scheduler, PointerVariant.BEACON) {
 
   private val config = pointerManager.configuration.beacon
 

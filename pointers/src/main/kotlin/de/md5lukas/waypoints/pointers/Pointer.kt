@@ -1,6 +1,7 @@
 package de.md5lukas.waypoints.pointers
 
 import de.md5lukas.schedulers.AbstractScheduler
+import de.md5lukas.waypoints.pointers.variants.PointerVariant
 import org.bukkit.Location
 import org.bukkit.entity.Player
 
@@ -8,6 +9,7 @@ internal abstract class Pointer(
     protected val pointerManager: PointerManager,
     protected val player: Player,
     protected val scheduler: AbstractScheduler,
+    val variant: PointerVariant,
 ) {
 
   protected val syncExecutor = scheduler.asExecutor()

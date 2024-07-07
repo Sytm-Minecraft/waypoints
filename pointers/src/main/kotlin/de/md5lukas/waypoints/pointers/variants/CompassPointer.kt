@@ -12,7 +12,7 @@ internal class CompassPointer(
     pointerManager: PointerManager,
     player: Player,
     scheduler: AbstractScheduler,
-) : Pointer(pointerManager, player, scheduler) {
+) : Pointer(pointerManager, player, scheduler, PointerVariant.COMPASS) {
 
   private val config = pointerManager.configuration.compass
 
