@@ -63,7 +63,8 @@ The plugin is shipping translations for the following languages:
 - English
 - German
 - Italian (by marcotech81)
-- Simplified Chinese (partial, by SnowCutieOwO)
+- Simplified Chinese (by SnowCutieOwO)
+- Traditional Chinese (by ItzTheBear)
 - Brazilian Portuguese (partial, by gaugt980131gg2)
 
 And if your language is not there, the plugin is fully translatable
@@ -145,9 +146,13 @@ It is in Spanish but with English subtitles: [Link to playlist](https://www.yout
 
 `waypoints.modify.anywhere` - Allows the player to place waypoints wherever they want, ignoring disabled worlds
 
+`waypoints.modify.other` - Allows the player to modify the waypoints of another player when using `/waypoints other`
+
 `waypoints.unlimited` - Allows the player to create more waypoints and folders than the limit in the config
 
 `waypoints.temporaryWaypoint`* - Allows the player to create a waypoint that is only visible for the time he is online
+
+`waypoints.temporaryWaypoint.other`* - Allows the player to create a waypoint for select players that is only visible for the time they is online
 
 `waypoints.teleport.private` - Allows the player to teleport to private waypoints
 
@@ -187,9 +192,9 @@ This plugin is licensed under the MIT license. For more information on it, you c
 
 ### Supported Minecraft versions
 
-Because I don't have the time or motivation to support a lot of versions, and it is generally advised to update to the latest Minecraft/Spigot versions only the
-latest Minecraft version is supported
+Because I don't have the time or motivation to support a lot of versions, and it is generally advised to update to the latest stable Paper versions,
+only the latest stable Paper version is supported, with previous versions if applicable
 <!-- modrinth_exclude.end -->
 ### Java version
 
-Java 17 is the minimum required version.
+Java 21 is the minimum required version.
