@@ -209,6 +209,10 @@ message:
       xp: |
         <red>Non hai abbastanza livelli di esperienza per il teletrasporto.
         <red>Livello richiesto: <yellow><required_level>
+#      xpPoints: |
+#        <red>You don't have enough experience points for teleportation.
+#        <red>Your current amount of points: <yellow><current_points>
+#        <red>Required points: <yellow><required_points>
       # current_balance: Vault balance of the player
       # required_balance: Vault balance required for teleportation
       balance: |

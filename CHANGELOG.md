@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- Simplified chinese translations missing for GUI settings
+
 ## 4.5.2
 
 ### Added

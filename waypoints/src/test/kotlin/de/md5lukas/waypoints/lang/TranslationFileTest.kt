@@ -4,31 +4,38 @@ import de.md5lukas.waypoints.WaypointsPlugin
 import kotlin.test.asserter
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.configuration.file.YamlConfiguration
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 class TranslationFileTest {
 
-  private fun collectUsedKeys(): List<String> {
-    val result = mutableListOf<String>()
+  companion object {
+    lateinit var required: List<String>
 
-    Translations(
-        object : TranslationLoader {
-          override val plugin: WaypointsPlugin
-            get() = throw UnsupportedOperationException()
+    @BeforeAll
+    @JvmStatic
+    fun collectUsedKeys() {
+      val result = mutableListOf<String>()
 
-          override val itemMiniMessage: MiniMessage
-            get() = MiniMessage.miniMessage()
+      Translations(
+          object : TranslationLoader {
+            override val plugin: WaypointsPlugin
+              get() = throw UnsupportedOperationException()
 
-          override fun get(key: String): String = throw UnsupportedOperationException()
+            override val itemMiniMessage: MiniMessage
+              get() = MiniMessage.miniMessage()
 
-          override fun registerTranslationWrapper(translation: AbstractTranslation) {
-            result.addAll(translation.getKeys())
-          }
-        })
+            override fun get(key: String): String = throw UnsupportedOperationException()
 
-    return result
+            override fun registerTranslationWrapper(translation: AbstractTranslation) {
+              result.addAll(translation.getKeys())
+            }
+          })
+
+      required = result
+    }
   }
 
   private fun getDefinedKeys(language: String): List<String> {
@@ -40,9 +47,8 @@ class TranslationFileTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = ["en", "de"])
+  @ValueSource(strings = ["en", "de", /*"zh-simplified",*/ "zh-hk"])
   fun verifyLanguageFileCompleteness(language: String) {
-    val required = collectUsedKeys()
     val defined = getDefinedKeys(language)
 
     assertAll(

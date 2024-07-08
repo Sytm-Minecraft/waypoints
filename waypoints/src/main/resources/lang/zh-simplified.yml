@@ -209,6 +209,10 @@ message:
       xp: |
         <red>你没有足够的等级用于传送.
         <red>需要等级: <yellow><required_level>
+#      xpPoints: |
+#        <red>You don't have enough experience points for teleportation.
+#        <red>Your current amount of points: <yellow><current_points>
+#        <red>Required points: <yellow><required_points>
       # current_balance: Vault balance of the player
       # required_balance: Vault balance required for teleportation
       balance: |
@@ -361,55 +365,55 @@ inventory:
          <green>/waypoints setTemporary X Y Z <名称>
 
          <gray>点此屏蔽
-    blocked:
-      displayName: "<yellow>屏蔽临时路径点"
-      description: |
-        <gray>其他玩家可通过如下命令与你共享临时路径点:
-        <green>/waypoints setTemporary X Y Z <名称>
-
-        <gray>点此解除屏蔽
-  pointers:
-    title:
-      displayName: "<yellow>自定义导航样式"
-      description: ""
-    on:
-      displayName: "<bold><green><name>"
-      description: ""
-    off:
-      displayName: "<bold><red><name>"
-      description: ""
-    actionBar:
-      name: "ActionBar"
-      description: |
-        <gray>在 ActionBar 中显示目标路径点的方向
-    beacon:
-      name: "信标"
-      description: |
-        <gray>进入路径点范围后，路径点会显示指定颜色的信标
-    blinkingBlock:
-      name: "闪烁方块"
-      description: |
-        <gray>进入路径点范围后，路径点实际位置会出现闪烁方块
-    bossBar:
-      name: "BossBar"
-      description: |
-        <gray>在 BossBar 中显示目标路径点的方向及其他位置
-    compass:
-      name: "指南针"
-      description: |
-        <gray>物品栏中出现指向路径点的指南针
-    hologram:
-      name: "悬浮字"
-      description: |
-        <gray>附近显示一个指向目标路径点方向及距离的悬浮字
-    particle:
-      name: "粒子指南针"
-      description: |
-        <gray>在脚下生成粒子效果指向目标路径点
-    trail:
-      name: "粒子轨迹"
-      description: |
-        <gray>在你的面前生成导航至目标路径点的路径
+      blocked:
+        displayName: "<yellow>屏蔽临时路径点"
+        description: |
+          <gray>其他玩家可通过如下命令与你共享临时路径点:
+          <green>/waypoints setTemporary X Y Z <名称>
+  
+          <gray>点此解除屏蔽
+    pointers:
+      title:
+        displayName: "<yellow>自定义导航样式"
+        description: ""
+      on:
+        displayName: "<bold><green><name>"
+        description: ""
+      off:
+        displayName: "<bold><red><name>"
+        description: ""
+      actionBar:
+        name: "ActionBar"
+        description: |
+          <gray>在 ActionBar 中显示目标路径点的方向
+      beacon:
+        name: "信标"
+        description: |
+          <gray>进入路径点范围后，路径点会显示指定颜色的信标
+      blinkingBlock:
+        name: "闪烁方块"
+        description: |
+          <gray>进入路径点范围后，路径点实际位置会出现闪烁方块
+      bossBar:
+        name: "BossBar"
+        description: |
+          <gray>在 BossBar 中显示目标路径点的方向及其他位置
+      compass:
+        name: "指南针"
+        description: |
+          <gray>物品栏中出现指向路径点的指南针
+      hologram:
+        name: "悬浮字"
+        description: |
+          <gray>附近显示一个指向目标路径点方向及距离的悬浮字
+      particle:
+        name: "粒子指南针"
+        description: |
+          <gray>在脚下生成粒子效果指向目标路径点
+      trail:
+        name: "粒子轨迹"
+        description: |
+          <gray>在你的面前生成导航至目标路径点的路径
 
   # amount: Amount of waypoints in this global folder visible for the player
   listing:
@@ -511,6 +515,10 @@ inventory:
       description: ""
       # levels: The amount of levels required for teleportation
       xpLevel: "<gray>你需要 <yellow><levels><gray> 级来传送至该路径点."
+      # points: The amount of experience points required for teleportation
+#      xpPoints: |
+#        <gray>You need <yellow><points><gray> experience points
+#        <gray>to perform this teleportation.
       # balance: The amount of balance required for teleportation
       balance: "<gray>你需要 <yellow><balance><gray> 金币来传送至该路径点."
       mustVisit: |
