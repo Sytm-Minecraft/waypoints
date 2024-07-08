@@ -51,7 +51,7 @@ command:
       public: "<gray> - <yellow>/<label> setPublic <座標名稱> <gray><bold>|<reset><gray> 創建一個新的公開座標"
       permission: "<gray> - <yellow>/<label> setPermission <Permission> <座標名稱> <gray><bold>|<reset><gray> 創建一個新的權限座標"
       temporary: "<gray> - <yellow>/<label> setTemporary <X> <Y> <Z> <gray><bold>|<reset><gray> 標記一個未保存的座標"
-    other: "<gray> - <yellow>/<label> other <名稱|UUID> <gray><bold>|<reset><gray> 查看其他玩家的座標"
+    other: "<gray> - <yellow>/<label> other <名稱> <gray><bold>|<reset><gray> 查看其他玩家的座標"
     statistics: "<gray> - <yellow>/<label> statistics <gray><bold>|<reset><gray> 查看數據庫統計信息"
     reload: "<gray> - <yellow>/<label> reload <gray><bold>|<reset><gray> 重載配置文件"
 

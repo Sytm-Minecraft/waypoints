@@ -51,7 +51,7 @@ command:
       public: "<gray> - <yellow>/<label> setPublic <路径点名称> <gray><bold>|<reset><gray> 创建一个新的公开路径点"
       permission: "<gray> - <yellow>/<label> setPermission <Permission> <路径点名称> <gray><bold>|<reset><gray> 创建一个新的权限路径点"
       temporary: "<gray> - <yellow>/<label> setTemporary <X> <Y> <Z> <gray><bold>|<reset><gray> 标记一个未保存的路径点"
-    other: "<gray> - <yellow>/<label> other <Name|UUID> <gray><bold>|<reset><gray> 查看其他玩家的路径点"
+    other: "<gray> - <yellow>/<label> other <Name> <gray><bold>|<reset><gray> 查看其他玩家的路径点"
     statistics: "<gray> - <yellow>/<label> statistics <gray><bold>|<reset><gray> 查看数据库统计信息"
     reload: "<gray> - <yellow>/<label> reload <gray><bold>|<reset><gray> 重载配置文件"
 

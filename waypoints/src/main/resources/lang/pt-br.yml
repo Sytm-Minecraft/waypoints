@@ -30,7 +30,7 @@ command:
       private: "<gray> - <yellow>/<label> set <Name> <gray><bold>|<reset><gray> Criar nova waypoint"
       public: "<gray> - <yellow>/<label> setPublic <Name> <gray><bold>|<reset><gray> Criar nova waypoint pública"
       permission: "<gray> - <yellow>/<label> setPermission <Permission> <Name> <gray><bold>|<reset><gray> Criar nova waypoint usando permissões"
-    other: "<gray> - <yellow>/<label> other <Name|UUID> <gray><bold>|<reset><gray> Ver waypoints de outro player"
+    other: "<gray> - <yellow>/<label> other <Name> <gray><bold>|<reset><gray> Ver waypoints de outro player"
     statistics: "<gray> - <yellow>/<label> statistics <gray><bold>|<reset><gray> Ver estatísticas do banco de dados"
 
   other:

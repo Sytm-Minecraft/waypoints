@@ -50,7 +50,7 @@ command:
       public: "<gray> - <yellow>/<label> setPublic <Name> <gray><bold>|<reset><gray> Create a new public waypoint"
       permission: "<gray> - <yellow>/<label> setPermission <Permission> <Name> <gray><bold>|<reset><gray> Create a new permission waypoint"
       temporary: "<gray> - <yellow>/<label> setTemporary <X> <Y> <Z> <gray><bold>|<reset><gray> Target a waypoint that is not saved"
-    other: "<gray> - <yellow>/<label> other <Name|UUID> <gray><bold>|<reset><gray> View the waypoints of another player"
+    other: "<gray> - <yellow>/<label> other <Name> <gray><bold>|<reset><gray> View the waypoints of another player"
     statistics: "<gray> - <yellow>/<label> statistics <gray><bold>|<reset><gray> View the statistics of the database"
     reload: "<gray> - <yellow>/<label> reload <gray><bold>|<reset><gray> Reload the configuration"
 

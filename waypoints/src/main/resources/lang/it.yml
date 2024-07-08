@@ -51,7 +51,7 @@ command:
       public: "<gray> - <yellow>/<label> setPublic <Name> <gray><bold>|<reset><gray> Crea un nuovo waypoint pubblico"
       permission: "<gray> - <yellow>/<label> setPermission <Permission> <Name> <gray><bold>|<reset><gray> Crea un nuovo waypoint con permessi"
       temporary: "<gray> - <yellow>/<label> setTemporary <X> <Y> <Z> <gray><bold>|<reset><gray> Seleziona un waypoint che non è stato salvato"
-    other: "<gray> - <yellow>/<label> other <Name|UUID> <gray><bold>|<reset><gray> Visualizza i waypoint di un altro giocatore"
+    other: "<gray> - <yellow>/<label> other <Name> <gray><bold>|<reset><gray> Visualizza i waypoint di un altro giocatore"
     statistics: "<gray> - <yellow>/<label> statistics <gray><bold>|<reset><gray> Visualizza le statistiche del database"
     reload: "<gray> - <yellow>/<label> reload <gray><bold>|<reset><gray> Ricarica la configurazione"
 

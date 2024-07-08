@@ -50,7 +50,7 @@ command:
       public: "<gray> - <yellow>/<label> setPublic <Name> <gray><bold>|<reset><gray> Erstelle einen neuen öffentlichen Wegpunkt"
       permission: "<gray> - <yellow>/<label> setPermission <Permission> <Name> <gray><bold>|<reset><gray> Erstelle einen neuen eingeschränkten Wegpunkt"
       temporary: "<gray> - <yellow>/<label> setTemporary <X> <Y> <Z> <gray><bold>|<reset><gray> Erstelle einen Wegpunkt der nicht gespeichert wird"
-    other: "<gray> - <yellow>/<label> other <Name|UUID> <gray><bold>|<reset><gray> Sieh dir die Wegpunkte von einem anderen Spieler an"
+    other: "<gray> - <yellow>/<label> other <Name> <gray><bold>|<reset><gray> Sieh dir die Wegpunkte von einem anderen Spieler an"
     statistics: "<gray> - <yellow>/<label> statistics <gray><bold>|<reset><gray> Sieh dir die Statistik der Datenbank an"
     reload: "<gray> - <yellow>/<label> reload <gray><bold>|<reset><gray> Lädt die Konfiguration neu"
 

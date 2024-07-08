@@ -109,7 +109,7 @@ It is in Spanish but with English subtitles: [Link to playlist](https://www.yout
 
 `/waypoints setTemporary <X> <Y> <Z>` - Create a waypoint that is only visible for the time he is online
 
-`/waypoints other <Name|UUID>` - View the waypoints of another player
+`/waypoints other <Name>` - View the waypoints of another player
 
 `/waypoints statistics` - Look at some rudimentary statistics about the database
 
