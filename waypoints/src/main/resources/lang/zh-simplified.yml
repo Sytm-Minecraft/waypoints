@@ -209,10 +209,10 @@ message:
       xp: |
         <red>你没有足够的等级用于传送.
         <red>需要等级: <yellow><required_level>
-#      xpPoints: |
-#        <red>You don't have enough experience points for teleportation.
-#        <red>Your current amount of points: <yellow><current_points>
-#        <red>Required points: <yellow><required_points>
+      xpPoints: |
+        <red>你没有足够的经验值用于传送.
+        <red>当前经验值: <yellow><current_points>
+        <red>需要经验值: <yellow><required_points>
       # current_balance: Vault balance of the player
       # required_balance: Vault balance required for teleportation
       balance: |
@@ -516,9 +516,8 @@ inventory:
       # levels: The amount of levels required for teleportation
       xpLevel: "<gray>你需要 <yellow><levels><gray> 级来传送至该路径点."
       # points: The amount of experience points required for teleportation
-#      xpPoints: |
-#        <gray>You need <yellow><points><gray> experience points
-#        <gray>to perform this teleportation.
+      xpPoints: |
+        <gray>你需要 <yellow><points><gray> 点经验值来传送至该路径点.
       # balance: The amount of balance required for teleportation
       balance: "<gray>你需要 <yellow><balance><gray> 金币来传送至该路径点."
       mustVisit: |
