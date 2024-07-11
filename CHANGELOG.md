@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Fixed
-- Simplified chinese translations missing for GUI settings
+- Some Simplified Chinese translations still missing by SnowCutieOwO
 
 ## 4.5.2
 
