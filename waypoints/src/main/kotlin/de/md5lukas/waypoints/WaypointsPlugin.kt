@@ -7,6 +7,7 @@ import de.md5lukas.konfig.Konfig
 import de.md5lukas.schedulers.Schedulers
 import de.md5lukas.waypoints.api.SQLiteManager
 import de.md5lukas.waypoints.api.WaypointsAPI
+import de.md5lukas.waypoints.api.WaypointsPointerManager
 import de.md5lukas.waypoints.api.base.DatabaseManager
 import de.md5lukas.waypoints.command.WaypointsCommand
 import de.md5lukas.waypoints.command.WaypointsScriptCommand
@@ -30,6 +31,7 @@ import de.md5lukas.waypoints.lang.WorldTranslations
 import de.md5lukas.waypoints.lang.YmlTranslationLoader
 import de.md5lukas.waypoints.pointers.PointerManager
 import de.md5lukas.waypoints.pointers.PointerManagerHooks
+import de.md5lukas.waypoints.pointers.WaypointsPointerManagerImpl
 import de.md5lukas.waypoints.tasks.CleanDatabaseTask
 import de.md5lukas.waypoints.util.APIExtensions
 import de.md5lukas.waypoints.util.TeleportManager
@@ -165,6 +167,11 @@ class WaypointsPlugin : JavaPlugin() {
 
   private fun initApiServiceProvider() {
     server.servicesManager.register(WaypointsAPI::class.java, api, this, ServicePriority.Normal)
+    server.servicesManager.register(
+        WaypointsPointerManager::class.java,
+        WaypointsPointerManagerImpl(this),
+        this,
+        ServicePriority.Normal)
     server.servicesManager.register(
         PointerManager::class.java, pointerManager, this, ServicePriority.Normal)
   }

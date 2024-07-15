@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- PointerManager API that directly uses Waypoints or players for targets
+
 ### Fixed
 - Some Simplified Chinese translations still missing by SnowCutieOwO
 
