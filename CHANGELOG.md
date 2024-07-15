@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 4.5.3
+
 ### Added
 - PointerManager API that directly uses Waypoints or players for targets
 
