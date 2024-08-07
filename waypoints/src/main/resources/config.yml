@@ -46,6 +46,9 @@ general:
     # When set to a value greater than zero, the death waypoint will be automatically deselected after the set time
     autoDeselectAfter: 0s
 
+  # When this option is enabled players will only see waypoints that are in the same world as themselves.
+  hideWaypointsFromDifferentWorlds: false
+
   # Specify in which worlds waypoints can be created
   # Players with the permission waypoints.modify.anywhere can place waypoints wherever they want.
   # Automatic waypoint-creation in disabled worlds will not occur

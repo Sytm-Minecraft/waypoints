@@ -116,11 +116,16 @@ class GUIFolderPage(wpGUI: WaypointsGUI, private val guiFolder: GUIFolder) :
       val itr = content.iterator()
       while (itr.hasNext()) {
         val it = itr.next()
-        if (it is Waypoint && it.location.world === null) {
-          if (wpGUI.plugin.waypointsConfig.general.worldNotFound === WorldNotFoundAction.DELETE) {
-            it.delete()
+        if (it is Waypoint) {
+          if (it.location.world === null) {
+            if (wpGUI.plugin.waypointsConfig.general.worldNotFound === WorldNotFoundAction.DELETE) {
+              it.delete()
+            }
+            itr.remove()
+          } else if (wpGUI.plugin.waypointsConfig.general.hideWaypointsFromDifferentWorlds &&
+              wpGUI.viewer.world != it.location.world) {
+            itr.remove()
           }
-          itr.remove()
         }
       }
     }

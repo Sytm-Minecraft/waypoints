@@ -14,6 +14,9 @@ class GeneralConfiguration {
   var worldNotFound: WorldNotFoundAction = WorldNotFoundAction.SHOW
     private set
 
+  var hideWaypointsFromDifferentWorlds: Boolean = false
+    private set
+
   val features = FeaturesConfiguration()
 
   val commands = CommandsConfiguration()

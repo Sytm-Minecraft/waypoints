@@ -87,6 +87,13 @@ class WaypointsSuggestionProvider(
                     *getResolvers(sender as? Player)))
       }
 
-  private suspend fun shouldDiscard(sender: CommandSender, waypoint: Waypoint) =
-      waypoint.location.world === null || filter?.invoke(sender, waypoint) == false
+  private suspend fun shouldDiscard(sender: CommandSender, waypoint: Waypoint): Boolean {
+    if (waypoint.location.world === null) return true
+    if (sender is Player && plugin.waypointsConfig.general.hideWaypointsFromDifferentWorlds) {
+      if (sender.world != waypoint.location.world) {
+        return true
+      }
+    }
+    return filter?.invoke(sender, waypoint) == false
+  }
 }
