@@ -449,7 +449,8 @@ class WaypointPage(wpGUI: WaypointsGUI, private val waypoint: Waypoint) :
             if (wpGUI.plugin.waypointsConfig.general.features.teleportation &&
                 (wpGUI.viewer.hasPermission(
                     wpGUI.plugin.teleportManager.getTeleportPermission(waypoint)) ||
-                    wpGUI.plugin.teleportManager.isTeleportEnabled(wpGUI.targetData, waypoint)) &&
+                    wpGUI.plugin.teleportManager.isTeleportEnabled(
+                        wpGUI.viewer, wpGUI.targetData, waypoint)) &&
                 waypoint.location.world !== null) {
               GUIItem(
                   wpGUI.translations.WAYPOINT_TELEPORT.getItem().also { stack ->

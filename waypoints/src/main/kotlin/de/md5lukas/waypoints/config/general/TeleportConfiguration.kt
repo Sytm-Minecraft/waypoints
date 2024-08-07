@@ -49,6 +49,14 @@ class TypedTeleportConfiguration {
   var maxCost: Long = 1
     private set
 
+  @ConfigPath("differentWorld.allow")
+  var differentWorldAllow: Boolean = true
+    private set
+
+  @ConfigPath("differentWorld.distance")
+  var differentWorldDistance: Double = 0.0
+    private set
+
   @UseAdapter(MathAdapter::class)
   var formula: Expression = MathParser.parse("1")
     private set
@@ -58,7 +66,7 @@ class TypedTeleportConfiguration {
 
   private class MathAdapter : TypeAdapter<Expression> {
     override fun get(section: ConfigurationSection, path: String) =
-        section.getString(path)?.let { MathParser.parse(it, "n") }
+        section.getString(path)?.let { MathParser.parse(it, "n", "distance") }
   }
 }
 

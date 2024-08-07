@@ -152,12 +152,21 @@ general:
     #
     # paymentType, maxCost, formula:
     # Available types are: disabled, free, xp (levels), xp_points, vault (your economy plugins currency)
-    # You can provide a formula to calculate the price. The variable n is how often a player teleported
+    # You can provide a formula to calculate the price.
     # When using the payment method xp the returned value is rounded to the closest full value
+    # The following variables are available:
+    # - n => how often a player teleported
+    # - distance => the distance between the player and waypoint
     #
     # perCategory:
     # Optionally the counter can be applied to the entire category (e.g. private, death, public, permission) per player or per waypoint per player
     # This only affects the price of the teleportation
+    #
+    # differentWorld.allow:
+    # Set to false to disallow teleportations to other worlds
+    #
+    # differentWorld.distance:
+    # The distance to assume between the player and waypoint if they are in different worlds, because now they cannot be properly measured anymore
     private:
       cooldown: 24h
       alsoApplyCooldownTo:
@@ -169,6 +178,10 @@ general:
       perCategory: true
       maxCost: 10
       formula: 1 + n
+
+      differentWorld:
+        allow: true
+        distance: 1000.0
 
     death:
       cooldown: 24h
@@ -183,6 +196,10 @@ general:
       maxCost: 10
       formula: 10
 
+      differentWorld:
+        allow: true
+        distance: 1000.0
+
     public:
       cooldown: 24h
       alsoApplyCooldownTo: []
@@ -194,6 +211,10 @@ general:
       maxCost: 8
       formula: 2 + n
 
+      differentWorld:
+        allow: true
+        distance: 1000.0
+
     permission:
       cooldown: 4h
       alsoApplyCooldownTo: []
@@ -204,6 +225,10 @@ general:
       perCategory: false
       maxCost: 3
       formula: n
+
+      differentWorld:
+        allow: true
+        distance: 1000.0
 
 integrations:
   dynmap:

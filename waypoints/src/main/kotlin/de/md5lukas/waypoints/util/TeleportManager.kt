@@ -13,7 +13,6 @@ import de.md5lukas.waypoints.config.general.TeleportPaymentType
 import java.time.Duration
 import java.time.Instant
 import java.time.OffsetDateTime
-import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.ceil
@@ -52,14 +51,18 @@ class TeleportManager(private val plugin: WaypointsPlugin) : Listener {
         Type.PERMISSION -> plugin.waypointsConfig.general.teleport.permission
       }
 
-  suspend fun isTeleportEnabled(player: WaypointsPlayer, waypoint: Waypoint): Boolean {
+  suspend fun isTeleportEnabled(
+      bukkitPlayer: Player,
+      player: WaypointsPlayer,
+      waypoint: Waypoint,
+  ): Boolean {
     val config = getTeleportConfig(waypoint)
     return when {
       config.paymentType === TeleportPaymentType.DISABLED -> false
-      waypoint.type !== Type.DEATH || config.onlyLastWaypoint == false -> true
-      else -> {
-        player.deathFolder.getWaypoints().maxByOrNull { it.createdAt } == waypoint
+      waypoint.type !== Type.DEATH || config.onlyLastWaypoint == false -> {
+        config.differentWorldAllow || bukkitPlayer.world == waypoint.location.world
       }
+      else -> player.deathFolder.getWaypoints().maxByOrNull { it.createdAt } == waypoint
     }
   }
 
@@ -73,9 +76,20 @@ class TeleportManager(private val plugin: WaypointsPlugin) : Listener {
           waypoint.getWaypointMeta(player.uniqueId).teleportations
         }
 
+    val distance =
+        if (player.world == waypoint.location.world) {
+          player.location.distance(waypoint.location)
+        } else {
+          config.differentWorldDistance
+        }
+
     return min(
         config.maxCost.toDouble(),
-        config.formula.eval(Collections.singletonMap("n", teleportations.toDouble())))
+        config.formula.eval(
+            mapOf(
+                "n" to teleportations.toDouble(),
+                "distance" to distance,
+            )))
   }
 
   suspend fun getTeleportCostDescription(player: Player, waypoint: Waypoint): List<Component>? {
@@ -101,7 +115,8 @@ class TeleportManager(private val plugin: WaypointsPlugin) : Listener {
 
   suspend fun isAllowedToTeleportToWaypoint(player: Player, waypoint: Waypoint): Boolean {
     if (player.hasPermission(getTeleportPermission(waypoint))) return true
-    if (!isTeleportEnabled(plugin.api.getWaypointPlayer(player.uniqueId), waypoint)) return false
+    if (!isTeleportEnabled(player, plugin.api.getWaypointPlayer(player.uniqueId), waypoint))
+        return false
     val config = getTeleportConfig(waypoint)
     if (config.mustVisit?.not() != false) return true
     return waypoint.getWaypointMeta(player.uniqueId).visited
