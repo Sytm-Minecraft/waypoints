@@ -5,6 +5,8 @@ import de.md5lukas.waypoints.WaypointsPlugin
 import de.md5lukas.waypoints.events.ConfigReloadEvent
 import java.io.File
 import java.nio.charset.StandardCharsets
+import java.util.*
+import kotlin.collections.HashMap
 import net.kyori.adventure.text.format.TextDecoration
 import net.kyori.adventure.text.minimessage.MiniMessage
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
@@ -121,11 +123,11 @@ class YmlTranslationLoader(
             "The key $key is not present in the translation file for the language $loadedLanguage")
   }
 
-  private val warned: MutableSet<String> = mutableSetOf()
+  private val warned: MutableSet<String> = Collections.synchronizedSet(mutableSetOf())
 
-  operator fun contains(key: String): Boolean {
+  fun contains(key: String, printWarning: Boolean): Boolean {
     val contains = key in translations
-    if (!contains && key !in warned) {
+    if (printWarning && !contains && key !in warned) {
       plugin.slF4JLogger.warn(
           "The translation key {} is missing in the translation file for the language {}, but not required",
           key,

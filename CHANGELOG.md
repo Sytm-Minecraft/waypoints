@@ -7,6 +7,9 @@
 - Variable containing the distance between a player and waypoint for the cost formula (`distance`)
 - Option to hide waypoints that are in different worlds as the player
 
+### Fixed
+- Warning that a world name has not been translated is printed multiple times
+
 ## 4.5.3
 
 ### Added
