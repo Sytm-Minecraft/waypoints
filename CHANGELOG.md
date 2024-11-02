@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 4.5.4
+
 ### Added
 - Option to disallow teleports to different worlds
 - Variable containing the distance between a player and waypoint for the cost formula (`distance`)

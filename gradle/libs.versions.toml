@@ -2,7 +2,7 @@
 kotlin = "2.0.21"
 coroutines = "1.9.0"
 jvmToolchain = "21"
-paper = "1.20.6-R0.1-SNAPSHOT"
+paper = "1.21.3-R0.1-SNAPSHOT"
 
 dynmap = "3.5-SNAPSHOT"
 
@@ -54,7 +54,7 @@ geyser = { group = "org.geysermc.geyser", name = "api", version = "2.4.2-SNAPSHO
 # Test dependencies
 junitLauncher = { group = "org.junit.platform", name = "junit-platform-launcher" }
 junitJupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version = "5.9.2" }
-mockBukkit = { group = "com.github.seeseemelk", name = "MockBukkit-v1.20", version = "3.+" }
+mockBukkit = { group = "com.github.seeseemelk", name = "MockBukkit-v1.21", version = "3.+" }
 sqliteJdbc = { group = "org.xerial", name = "sqlite-jdbc", version = "3.36.0.3" }
 
 [plugins]
