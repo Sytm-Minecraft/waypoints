@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## 4.5.5
+
+### Fixed
+- Plugin not working on 1.21.1 - 1.20.6
+
 ## 4.5.4
 
 ### Added

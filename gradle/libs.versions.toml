@@ -2,7 +2,7 @@
 kotlin = "2.0.21"
 coroutines = "1.9.0"
 jvmToolchain = "21"
-paper = "1.21.3-R0.1-SNAPSHOT"
+paper = "1.20.6-R0.1-SNAPSHOT"
 
 dynmap = "3.5-SNAPSHOT"
 
